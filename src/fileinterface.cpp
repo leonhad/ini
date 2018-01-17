@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include "fileinterface.h"
 
-namespace ini{
+namespace ini {
     FileInterface::FileInterface() {
         file = NULL;
     }
