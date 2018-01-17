@@ -1,15 +1,15 @@
-#include "memmoryfile.h"
+#include "memoryfile.h"
 
 namespace ini {
-	MemmoryFile::MemmoryFile() : Groups()
+	MemoryFile::MemoryFile() : Groups()
 	{
 	}
 
-	MemmoryFile::~MemmoryFile()
+	MemoryFile::~MemoryFile()
 	{
 	}
 
-	void MemmoryFile::open(string ini)
+	void MemoryFile::open(string ini)
 	{
 		char ctoken;
 		unsigned int current = 0;
@@ -99,7 +99,7 @@ namespace ini {
 		}
 	}
 
-	string MemmoryFile::save()
+	string MemoryFile::save()
 	{
 		string file;
 		map<string, Keys *> g = getGroups();

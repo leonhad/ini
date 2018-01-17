@@ -8,12 +8,12 @@
 using namespace std;
 
 namespace ini {
-    class MemmoryFile : public Groups {
+    class MemoryFile : public Groups {
     public:
         string comment;
 
-        MemmoryFile();
-        virtual ~MemmoryFile();
+        MemoryFile();
+        virtual ~MemoryFile();
 		void open(string ini);
 		string save();
     };
