@@ -11,3 +11,4 @@ config.status
 *.lo
 *.o
 .libs/
+*.pro.user
