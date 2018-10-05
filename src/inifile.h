@@ -8,15 +8,15 @@
 using namespace std;
 
 namespace ini {
-    class IniFile : public Groups, public FileInterface {
-    public:
-        IniFile();
-        virtual ~IniFile();
-        virtual void save(string filename);
+class IniFile : public Groups, public FileInterface {
+public:
+    IniFile();
+    virtual ~IniFile();
+    virtual void save(string filename);
 
-    protected:
-        virtual bool load();
-    };
+protected:
+    virtual bool load();
+};
 }
 
 #endif

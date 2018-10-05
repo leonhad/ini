@@ -8,17 +8,15 @@
 using namespace std;
 
 namespace ini {
-    class MemoryFile : public Groups {
-    public:
-        string comment;
+class MemoryFile : public Groups {
+public:
+    string comment;
 
-        MemoryFile();
-        virtual ~MemoryFile();
-		void open(string ini);
-		string save();
-    };
+    MemoryFile();
+    virtual ~MemoryFile();
+    void open(string ini);
+    string save();
+};
 }
 
-
 #endif
-

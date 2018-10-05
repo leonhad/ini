@@ -1,5 +1,5 @@
-#ifndef __INI
-#define __INI
+#ifndef _ini_h
+#define _ini_h
 
 #include "keys.h"
 #include "groups.h"

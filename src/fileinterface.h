@@ -7,24 +7,24 @@
 using namespace std;
 
 namespace ini {
-    class FileInterface {
-    public:
-        FileInterface();
-        virtual ~FileInterface();
-        bool open(string filename);
-        void save();
-        virtual void save(string filename) = 0;
-        void flush();
-        void reload();
-        void close();
-        bool isOpen();
-        
-    protected:
-        string filename;
-        fstream *file;
+class FileInterface {
+public:
+    FileInterface();
+    virtual ~FileInterface();
+    bool open(string filename);
+    void save();
+    virtual void save(string filename) = 0;
+    void flush();
+    void reload();
+    void close();
+    bool isOpen();
 
-        virtual bool load() = 0;
-    };    
+protected:
+    string filename;
+    fstream *file;
+
+    virtual bool load() = 0;
+};
 }
 
 #endif
