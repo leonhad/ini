@@ -32,7 +32,7 @@ void FileInterface::reload() {
 }
 
 bool FileInterface::isOpen() {
-    register bool ret = false;
+    bool ret = false;
     if (file != nullptr) {
         ret = file->is_open();
     }
