@@ -6,9 +6,11 @@
 
 using namespace std;
 
-namespace ini {
-class Keys {
-public:
+namespace ini
+{
+class Keys
+{
+  public:
     ~Keys();
     void addKey(string name, string data);
     string getKey(string name);
@@ -16,9 +18,9 @@ public:
     map<string, string> getKeys();
     void clear();
 
-protected:
+  protected:
     map<string, string> dataList;
 };
-}
+} // namespace ini
 
 #endif

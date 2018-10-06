@@ -7,9 +7,11 @@
 
 using namespace std;
 
-namespace ini {
-class MemoryFile : public Groups {
-public:
+namespace ini
+{
+class MemoryFile : public Groups
+{
+  public:
     string comment;
 
     MemoryFile();
@@ -17,6 +19,6 @@ public:
     void open(string ini);
     string save();
 };
-}
+} // namespace ini
 
 #endif

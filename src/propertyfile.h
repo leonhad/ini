@@ -4,16 +4,18 @@
 #include "fileinterface.h"
 #include "keys.h"
 
-namespace ini {
-class PropertyFile : public FileInterface, public Keys {
-public:
+namespace ini
+{
+class PropertyFile : public FileInterface, public Keys
+{
+  public:
     PropertyFile();
     virtual ~PropertyFile();
     virtual void save(string filename);
 
-protected:
+  protected:
     virtual bool load();
 };
-}
+} // namespace ini
 
 #endif

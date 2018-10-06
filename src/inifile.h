@@ -7,16 +7,18 @@
 
 using namespace std;
 
-namespace ini {
-class IniFile : public Groups, public FileInterface {
-public:
+namespace ini
+{
+class IniFile : public Groups, public FileInterface
+{
+  public:
     IniFile();
     virtual ~IniFile();
     virtual void save(string filename);
 
-protected:
+  protected:
     virtual bool load();
 };
-}
+} // namespace ini
 
 #endif

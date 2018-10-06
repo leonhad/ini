@@ -2,7 +2,6 @@
 
 using namespace ini;
 
-
 MemoryFile::MemoryFile() : Groups()
 {
 }
@@ -15,30 +14,35 @@ void MemoryFile::open(string ini)
 {
     char ctoken;
     unsigned int current = 0;
-    //criaÁ„o tempor·ria do nome do grupo.
+    //cria√ß√£o tempor√°ria do nome do grupo.
     string grouptemp;
     const char *ckey;
     const char *cgroup = nullptr;
-    //criaÁ„o tempor·ria do nome da chave.
+    //cria√ß√£o tempor√°ria do nome da chave.
     string keytemp;
-    while(current <= ini.size()) {
+    while (current <= ini.size())
+    {
         ctoken = ini[current];
         current++;
-        switch(ctoken) {
+        switch (ctoken)
+        {
         //grupo
         case '[':
             //comece com a string vazia.
             grouptemp = "";
-            while(current < ini.size()) {
+            while (current < ini.size())
+            {
                 ctoken = ini[current];
                 current++;
-                if (ctoken == ']' || ctoken == '\n') {
+                if (ctoken == ']' || ctoken == '\n')
+                {
                     //if (ctoken == '\n')
                     //	cout << "Group error in line: " << line << endl;
                     break;
                 }
                 //para erros e outras coisas mais.
-                switch(ctoken) {
+                switch (ctoken)
+                {
                 case '[':
                     //cout << "Group error in line: " << line << endl;
                     break;
@@ -51,44 +55,53 @@ void MemoryFile::open(string ini)
             break;
             //chave
         default:
-            switch (ctoken) {
+            switch (ctoken)
+            {
             case ' ':
                 break;
             case '\n':
                 break;
             default:
                 keytemp = "";
-                while(current <= ini.size()) {
+                while (current <= ini.size())
+                {
                     //se for igual a '=' saia do loop.
-                    if (ctoken == '=') {
+                    if (ctoken == '=')
+                    {
                         break;
                     }
-                    //se n„o for espaÁo manda ver.
-                    if (ctoken != ' ') {
+                    //se n√£o for espa√ßo manda ver.
+                    if (ctoken != ' ')
+                    {
                         keytemp = keytemp + ctoken;
                     }
                     ctoken = ini[current];
                     current++;
                 }
-                //se n„o possuir o '=' na linha pule ela.
-                if (ctoken == '\n') {
+                //se n√£o possuir o '=' na linha pule ela.
+                if (ctoken == '\n')
+                {
                     break;
                 }
                 ckey = keytemp.c_str();
                 //mandado para o while seguite.
                 //filein.get(ctoken);
-                while(current <= ini.size()) {
+                while (current <= ini.size())
+                {
                     ctoken = ini[current];
                     current++;
-                    //se n„o possuir um caractere depois do '=' saia do loop;
-                    if (ctoken == '\n' || ctoken != ' ') {
+                    //se n√£o possuir um caractere depois do '=' saia do loop;
+                    if (ctoken == '\n' || ctoken != ' ')
+                    {
                         break;
                     }
                 }
                 string keytemp2;
-                while(current <= ini.size()) {
+                while (current <= ini.size())
+                {
                     //se for uma nova linha saia do loop.
-                    if (ctoken == '\n') {
+                    if (ctoken == '\n')
+                    {
                         break;
                     }
                     keytemp2 = keytemp2 + ctoken;
@@ -109,10 +122,12 @@ string MemoryFile::save()
     map<string, string> key;
     map<string, string>::iterator ikey;
 
-    for (i = g.begin(); i != g.end(); i++) {
+    for (i = g.begin(); i != g.end(); i++)
+    {
         file += "[" + (*i).first + "]\n";
         key = (*i).second->getKeys();
-        for (ikey = key.begin(); ikey != key.end(); ikey++) {
+        for (ikey = key.begin(); ikey != key.end(); ikey++)
+        {
             file += (*ikey).first + "=" + (*ikey).second + "\n";
         }
     }

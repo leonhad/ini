@@ -3,45 +3,57 @@
 
 using namespace ini;
 
-FileInterface::FileInterface() {
+FileInterface::FileInterface()
+{
     file = nullptr;
 }
 
-FileInterface::~FileInterface() {
+FileInterface::~FileInterface()
+{
     close();
 }
 
-bool FileInterface::open(string name) {
+bool FileInterface::open(string name)
+{
     this->filename = name;
     return load();
 }
 
-void FileInterface::save() {
+void FileInterface::save()
+{
     save(filename);
 }
 
-void FileInterface::flush() {
-    if (file != nullptr && file->is_open()) {
+void FileInterface::flush()
+{
+    if (file != nullptr && file->is_open())
+    {
         file->flush();
     }
 }
 
-void FileInterface::reload() {
+void FileInterface::reload()
+{
     close();
     load();
 }
 
-bool FileInterface::isOpen() {
+bool FileInterface::isOpen()
+{
     bool ret = false;
-    if (file != nullptr) {
+    if (file != nullptr)
+    {
         ret = file->is_open();
     }
     return ret;
 }
 
-void FileInterface::close() {
-    if (file) {
-        if (file->is_open()) {
+void FileInterface::close()
+{
+    if (file)
+    {
+        if (file->is_open())
+        {
             file->flush();
             file->close();
         }

@@ -6,9 +6,11 @@
 
 using namespace std;
 
-namespace ini {
-class FileInterface {
-public:
+namespace ini
+{
+class FileInterface
+{
+  public:
     FileInterface();
     virtual ~FileInterface();
     bool open(string filename);
@@ -19,12 +21,12 @@ public:
     void close();
     bool isOpen();
 
-protected:
+  protected:
     string filename;
     fstream *file;
 
     virtual bool load() = 0;
 };
-}
+} // namespace ini
 
 #endif

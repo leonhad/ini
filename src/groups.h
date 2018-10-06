@@ -8,13 +8,15 @@
 
 using namespace std;
 
-namespace ini {
-class Groups {
-private:
+namespace ini
+{
+class Groups
+{
+  private:
     map<string, Keys *> groupList;
     string current;
 
-public:
+  public:
     ~Groups();
     void addGroup(string name);
     void delGroup(string name);
@@ -30,6 +32,6 @@ public:
     void clear();
 };
 
-}
+} // namespace ini
 
 #endif
