@@ -4,8 +4,6 @@
 #include <string>
 #include <fstream>
 
-using namespace std;
-
 namespace ini
 {
 class FileInterface
@@ -13,17 +11,17 @@ class FileInterface
   public:
     FileInterface();
     virtual ~FileInterface();
-    bool open(string filename);
+    bool open(std::string filename);
     void save();
-    virtual void save(string filename) = 0;
+    virtual void save(std::string filename) = 0;
     void flush();
     void reload();
     void close();
     bool isOpen();
 
   protected:
-    string filename;
-    fstream *file;
+    std::string filename;
+    std::fstream *file;
 
     virtual bool load() = 0;
 };

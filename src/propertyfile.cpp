@@ -14,18 +14,12 @@ bool PropertyFile::load()
 {
     clear();
 
-    filebuf filebuffer;
-    if (filename.empty())
-    {
-        //if no name return
-        return false;
-    }
-    //if not open, return.
-    if (filebuffer.open(filename.c_str(), ios::in) == nullptr)
+    ifstream filein(filename, ios::in);
+    if (not filein.is_open())
     {
         return false;
     }
-    istream filein(&filebuffer);
+ 
     char ctoken;
     int line = 1;
     // Temporary group name.
