@@ -3,22 +3,19 @@
 
 #include "fileinterface.h"
 #include "groups.h"
+#include "dllutil.h"
 #include <string>
-
-using namespace std;
 
 namespace ini
 {
-class IniFile : public Groups, public FileInterface
-{
-  public:
-    IniFile();
-    virtual ~IniFile();
-    virtual void save(string filename);
-
-  protected:
-    virtual bool load();
-};
-} // namespace ini
+	class EXPORT_INI IniFile : public Groups, public FileInterface
+	{
+	public:
+		IniFile();
+		virtual ~IniFile();
+		virtual bool open(std::string filename) override;
+		virtual void save(std::string filename) override;
+	};
+}
 
 #endif

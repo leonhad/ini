@@ -3,22 +3,21 @@
 
 #include "fileinterface.h"
 #include "groups.h"
+#include "dllutil.h"
 #include <string>
 
 using namespace std;
 
 namespace ini
 {
-class MemoryFile : public Groups
-{
-  public:
-    string comment;
-
-    MemoryFile();
-    virtual ~MemoryFile();
-    void open(string ini);
-    string save();
-};
-} // namespace ini
+	class EXPORT_INI MemoryFile : public Groups
+	{
+	public:
+		MemoryFile();
+		virtual ~MemoryFile();
+		void open(string ini);
+		string save();
+	};
+}
 
 #endif

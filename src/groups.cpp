@@ -1,4 +1,5 @@
 #include "groups.h"
+#include <map>
 
 using namespace std;
 using namespace ini;

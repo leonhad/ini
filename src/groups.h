@@ -2,36 +2,34 @@
 #define _groups_h
 
 #include "keys.h"
+#include "dllutil.h"
 #include <string>
 #include <vector>
 #include <map>
 
-using namespace std;
-
 namespace ini
 {
-class Groups
-{
-  private:
-    map<string, Keys *> groupList;
-    string current;
+	class EXPORT_INI Groups
+	{
+	private:
+		std::map<std::string, Keys *> groupList;
+		std::string current;
 
-  public:
-    ~Groups();
-    void addGroup(string name);
-    void delGroup(string name);
-    map<string, Keys *> getGroups();
-    Keys *getKeys(string group);
-    Keys *getKeys();
-    void addKey(string group, string name, string data);
-    void addKey(string name, string data);
-    void delKey(string group, string name);
-    void delKey(string name);
-    string getKey(string group, string name);
-    string getKey(string name);
-    void clear();
-};
-
-} // namespace ini
+	public:
+		~Groups();
+		void addGroup(std::string name);
+		void delGroup(std::string name);
+		std::map<std::string, Keys *> getGroups();
+		Keys *getKeys(std::string group);
+		Keys *getKeys();
+		void addKey(std::string group, std::string name, std::string data);
+		void addKey(std::string name, std::string data);
+		void delKey(std::string group, std::string name);
+		void delKey(std::string name);
+		std::string getKey(std::string group, std::string name);
+		std::string getKey(std::string name);
+		void clear();
+	};
+}
 
 #endif

@@ -1,26 +1,25 @@
 #ifndef keys_h
 #define keys_h
 
+#include "dllutil.h"
 #include <string>
 #include <map>
 
-using namespace std;
-
 namespace ini
 {
-class Keys
-{
-  public:
-    ~Keys();
-    void addKey(string name, string data);
-    string getKey(string name);
-    void delKey(string name);
-    map<string, string> getKeys();
-    void clear();
+	class EXPORT_INI Keys
+	{
+	public:
+		~Keys();
+		void addKey(std::string name, std::string data);
+		std::string getKey(std::string name);
+		void delKey(std::string name);
+		std::map<std::string, std::string> getKeys();
+		void clear();
 
-  protected:
-    map<string, string> dataList;
-};
-} // namespace ini
+	protected:
+		std::map<std::string, std::string> dataList;
+	};
+}
 
 #endif
