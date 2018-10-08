@@ -16,20 +16,20 @@ bool IniFile::load()
     clear();
 
     ifstream filein(filename, ios::in);
-    if (not filein.is_open())
+    if (!filein.is_open())
     {
         return false;
     }
 
     char ctoken;
     int line = 1;
-    //cria��o tempor�ria do nome do grupo.
+    //criação temporária do nome do grupo.
     string grouptemp;
     const char *ckey;
     const char *cgroup = nullptr;
-    //cria��o tempor�ria do nome da chave.
+    //criação temporária do nome da chave.
     string keytemp;
-    while (not filein.eof())
+    while (!filein.eof())
     {
         filein.get(ctoken);
         switch (ctoken)
@@ -83,24 +83,24 @@ bool IniFile::load()
                     }
                     filein.get(ctoken);
                 }
-                //se n�o possuir o '=' na linha pule ela.
+                //se não possuir o '=' na linha pule ela.
                 if (ctoken == '\n')
                 {
                     break;
                 }
                 ckey = keytemp.c_str();
 
-                while (not filein.eof())
+                while (!filein.eof())
                 {
                     filein.get(ctoken);
-                    //se n�o possuir um caractere depois do '=' saia do loop;
+                    //se não possuir um caractere depois do '=' saia do loop;
                     if (ctoken == '\n' || ctoken != ' ')
                     {
                         break;
                     }
                 }
                 string keytemp2;
-                while (not filein.eof())
+                while (!filein.eof())
                 {
                     //se for uma nova linha saia do loop.
                     if (ctoken == '\n')
@@ -108,7 +108,7 @@ bool IniFile::load()
                         break;
                     }
 
-                    //se n�o for espa�o manda ver. mandado para o while anterior
+                    //se não for espaço manda ver. mandado para o while anterior
                     keytemp2 = keytemp2 + ctoken;
                     filein.get(ctoken);
                 }

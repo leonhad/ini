@@ -1,5 +1,4 @@
 #include "keys.h"
-#include <stdlib.h>
 
 using namespace std;
 using namespace ini;

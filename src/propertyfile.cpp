@@ -15,7 +15,7 @@ bool PropertyFile::load()
     clear();
 
     ifstream filein(filename, ios::in);
-    if (not filein.is_open())
+    if (!filein.is_open())
     {
         return false;
     }
@@ -28,7 +28,7 @@ bool PropertyFile::load()
 
     // Temporary group.
     string keytemp;
-    while (not filein.eof())
+    while (!filein.eof())
     {
         filein.get(ctoken);
         switch (ctoken)
@@ -40,47 +40,44 @@ bool PropertyFile::load()
             break;
         default:
             keytemp = "";
-            while (not filein.eof())
+            while (!filein.eof())
             {
                 //se for igual a '=' saia do loop.
                 if (ctoken == '=')
                 {
                     break;
                 }
-                //se n�o for espa�o manda ver.
+                //se não for espaço manda ver.
                 if (ctoken != ' ')
                 {
                     keytemp = keytemp + ctoken;
                 }
                 filein.get(ctoken);
             }
-            //se n�o possuir o '=' na linha pule ela.
+            //se não possuir o '=' na linha pule ela.
             if (ctoken == '\n')
             {
                 break;
             }
             ckey = keytemp.c_str();
-            //mandado para o while seguite.
-            //filein.get(ctoken);
-            while (not filein.eof())
+
+            while (!filein.eof())
             {
                 filein.get(ctoken);
-                //se n�o possuir um caractere depois do '=' saia do loop;
+                //se não possuir um caractere depois do '=' saia do loop;
                 if (ctoken == '\n' || ctoken != ' ')
                 {
                     break;
                 }
             }
             string keytemp2;
-            while (not filein.eof())
+            while (!filein.eof())
             {
                 //se for uma nova linha saia do loop.
                 if (ctoken == '\n')
                 {
                     break;
                 }
-                //se n�o for espa�o manda ver. mandado para o while anterior
-                //if (ctoken != ' ')
                 keytemp2 = keytemp2 + ctoken;
                 filein.get(ctoken);
             }
@@ -93,12 +90,8 @@ bool PropertyFile::load()
 void PropertyFile::save(string filename)
 {
     file = new fstream(filename.c_str(), ios::out);
-
-    map<string, string> key;
-    map<string, string>::iterator ikey;
-
-    key = getKeys();
-    for (ikey = key.begin(); ikey != key.end(); ikey++)
+    auto key = getKeys();
+    for (auto ikey = key.begin(); ikey != key.end(); ikey++)
     {
         *file << (*ikey).first << "=" << (*ikey).second << endl;
     }
