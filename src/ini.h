@@ -1,7 +1,7 @@
 #ifndef _ini_h
 #define _ini_h
 
-#include "keys.h"
+#include "key.h"
 #include "groups.h"
 #include "fileinterface.h"
 #include "inifile.h"

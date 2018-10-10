@@ -50,14 +50,13 @@ bool IniFile::open(string filename)
 				switch (ctoken)
 				{
 				case '[':
-					//cout << "Group error in line: " << line << endl;
 					break;
 				default:
 					grouptemp = grouptemp + ctoken;
 				}
 			}
 			cgroup = grouptemp.c_str();
-			addGroup(cgroup);
+			add(cgroup);
 			break;
 			//chave
 		default:
@@ -94,7 +93,7 @@ bool IniFile::open(string filename)
 				while (!filein.eof())
 				{
 					filein.get(ctoken);
-					//se não possuir um caractere depois do '=' saia do loop;
+
 					if (ctoken == '\n' || ctoken != ' ')
 					{
 						break;
@@ -113,7 +112,7 @@ bool IniFile::open(string filename)
 					keytemp2 = keytemp2 + ctoken;
 					filein.get(ctoken);
 				}
-				addKey(cgroup, ckey, keytemp2);
+				add(cgroup, ckey, keytemp2);
 			}
 		}
 	}
@@ -124,14 +123,13 @@ void IniFile::save(string filename)
 {
 	fstream file(filename, ios::out);
 
-	map<string, Keys *> g = getGroups();
-	for (auto i = g.begin(); i != g.end(); i++)
+	auto g = list();
+	for (auto group : g)
 	{
-		file << "[" << (*i).first << "]" << endl;
-		auto key = (*i).second->getKeys();
-		for (auto ikey = key.begin(); ikey != key.end(); ikey++)
+		file << "[" << group.first << "]" << endl;
+		for (auto key : *group.second)
 		{
-			file << (*ikey).first << "=" << (*ikey).second << endl;
+			file << key.first << "=" << key.second << endl;
 		}
 	}
 	file.close();

@@ -2,12 +2,12 @@
 #define propertyfile_h
 
 #include "fileinterface.h"
-#include "keys.h"
+#include "groups.h"
 #include "dllutil.h"
 
 namespace ini
 {
-	class EXPORT_INI PropertyFile : public FileInterface, public Keys
+	class EXPORT_INI PropertyFile : public FileInterface, public KeyList
 	{
 	public:
 		PropertyFile();

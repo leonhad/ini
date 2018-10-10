@@ -3,7 +3,6 @@ libini_la_SOURCES = \
     fileinterface.cpp \
     groups.cpp \
     inifile.cpp \
-    keys.cpp \
     memoryfile.cpp \
     propertyfile.cpp
 

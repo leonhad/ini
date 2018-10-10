@@ -41,5 +41,8 @@ src/pdftools.pro.user
 /src/pdftools.1
 /*.gz
 src/testsuit
-src/x64
-src/x32
+x64
+x32
+Debug
+Release
+packages

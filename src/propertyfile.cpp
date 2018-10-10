@@ -4,7 +4,7 @@
 using namespace ini;
 using namespace std;
 
-PropertyFile::PropertyFile() : Keys()
+PropertyFile::PropertyFile() : KeyList{}
 {
 }
 
@@ -24,8 +24,7 @@ bool PropertyFile::open(string filename)
 
 	char ctoken;
 	int line = 1;
-	// Temporary group name.
-	string grouptemp;
+
 	const char *ckey;
 
 	// Temporary group.
@@ -66,7 +65,7 @@ bool PropertyFile::open(string filename)
 			while (!filein.eof())
 			{
 				filein.get(ctoken);
-				//se não possuir um caractere depois do '=' saia do loop;
+				//se não possuir um caractere depois do '=' saia do loop.
 				if (ctoken == '\n' || ctoken != ' ')
 				{
 					break;
@@ -83,7 +82,7 @@ bool PropertyFile::open(string filename)
 				keytemp2 = keytemp2 + ctoken;
 				filein.get(ctoken);
 			}
-			addKey(ckey, keytemp2);
+			push_back({ ckey, keytemp2 });
 		}
 	}
 	return true;
@@ -92,10 +91,10 @@ bool PropertyFile::open(string filename)
 void PropertyFile::save(string filename)
 {
 	fstream file(filename.c_str(), ios::out);
-	auto key = getKeys();
-	for (auto ikey = key.begin(); ikey != key.end(); ikey++)
+
+	for (const auto &key : *this)
 	{
-		file << (*ikey).first << "=" << (*ikey).second << endl;
+		file << key.first << "=" << key.second << endl;
 	}
 	file.close();
 }
