@@ -13,7 +13,7 @@ libini_la_HEADERS = \
 	fileinterface.h \
     groups.h \
     inifile.h \
-    keys.h \
+    key.h \
     memoryfile.h \
     propertyfile.h
 
