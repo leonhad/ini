@@ -13,7 +13,7 @@ key = value
 
 # Licensing
 
-PDFTools is released under the GNU Lesser General Public License v3.0 (LGPLv3+).
+This software is released under the GNU Lesser General Public License v3.0 (LGPLv3+).
 Additionally, Autoconf includes a licensing exception in some of its
 source files.
 
