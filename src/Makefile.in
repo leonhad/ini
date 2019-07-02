@@ -357,7 +357,7 @@ libini_la_HEADERS = \
 
 libini_la_CXXFLAGS = $(AM_CXXFLAGS)
 libini_la_CPPFLAGS = $(AM_CPPFLAGS)
-libini_la_LDFLAGS = -no-undefined
+libini_la_LDFLAGS = -no-undefined -version-info 2:4:1
 nodist_libini_la_SOURCES = $(BUILT_SOURCES)
 all: all-am
 
@@ -372,9 +372,9 @@ $(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu src/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign src/Makefile'; \
 	$(am__cd) $(top_srcdir) && \
-	  $(AUTOMAKE) --gnu src/Makefile
+	  $(AUTOMAKE) --foreign src/Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \
 	  *config.status*) \

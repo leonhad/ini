@@ -19,6 +19,6 @@ libini_la_HEADERS = \
 
 libini_la_CXXFLAGS = $(AM_CXXFLAGS)
 libini_la_CPPFLAGS = $(AM_CPPFLAGS)
-libini_la_LDFLAGS = -no-undefined
+libini_la_LDFLAGS = -no-undefined -version-info 0:0:0
 
 nodist_libini_la_SOURCES = $(BUILT_SOURCES)
