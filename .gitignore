@@ -6,6 +6,8 @@
 *.gcov
 *.gcda
 *.gcno
+.DS_Store
+.scannerwork
 cppunit.xmL
 config.h
 config.log
