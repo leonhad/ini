@@ -1,3 +1,22 @@
+/*
+ * This file is part of INI.
+ * Copyright (C) 2012 Leonardo Alves da Costa
+ * mailto:leonhad AT gmail DOT com
+ *
+ * PDF Tools is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 3 of the License, or (at your option) any later version.
+ *
+ * PDF Tools is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program; if not, write to the Free Software Foundation,
+ * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ */
 #include "inifile.h"
 #include <fstream>
 
@@ -17,7 +36,7 @@ bool IniFile::open(string filename)
     clear();
     
     ifstream filein(filename, ios::in);
-    if (!filein.is_open())
+    if (not filein.is_open())
     {
         return false;
     }
@@ -30,7 +49,7 @@ bool IniFile::open(string filename)
     const char *cgroup = nullptr;
     //criação temporária do nome da chave.
     string keytemp;
-    while (!filein.eof())
+    while (not filein.eof())
     {
         filein.get(ctoken);
         switch (ctoken)
@@ -39,7 +58,7 @@ bool IniFile::open(string filename)
             case '[':
                 //comece com a string vazia.
                 grouptemp = "";
-                while (!filein.eof())
+                while (not filein.eof())
                 {
                     filein.get(ctoken);
                     if (ctoken == ']' || ctoken == '\n')
@@ -69,7 +88,7 @@ bool IniFile::open(string filename)
                     break;
                 default:
                     keytemp = "";
-                    while (!filein.eof())
+                    while (not filein.eof())
                     {
                         //se for igual a '=' saia do loop.
                         if (ctoken == '=')
@@ -90,7 +109,7 @@ bool IniFile::open(string filename)
                     }
                     ckey = keytemp.c_str();
                     
-                    while (!filein.eof())
+                    while (not filein.eof())
                     {
                         filein.get(ctoken);
                         
@@ -100,7 +119,7 @@ bool IniFile::open(string filename)
                         }
                     }
                     string keytemp2;
-                    while (!filein.eof())
+                    while (not filein.eof())
                     {
                         //se for uma nova linha saia do loop.
                         if (ctoken == '\n')
