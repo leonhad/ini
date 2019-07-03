@@ -23,6 +23,7 @@
 		A76A5CBB22CD63DD00047603 /* gtest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A76A5CBA22CD63DD00047603 /* gtest.framework */; };
 		A76A5CBD22CD641700047603 /* keytest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A76A5CBC22CD641700047603 /* keytest.cpp */; };
 		A76A5CBE22CD642F00047603 /* libini.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A76A5C7B22CC31FA00047603 /* libini.dylib */; };
+		A76A5CC322CD673A00047603 /* pch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A76A5CC122CD673A00047603 /* pch.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -55,6 +56,8 @@
 		A76A5CB222CD5F2300047603 /* test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = test; sourceTree = BUILT_PRODUCTS_DIR; };
 		A76A5CBA22CD63DD00047603 /* gtest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = gtest.framework; path = ../../../../../Library/Frameworks/gtest.framework; sourceTree = "<group>"; };
 		A76A5CBC22CD641700047603 /* keytest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = keytest.cpp; path = ../../test/keytest.cpp; sourceTree = "<group>"; };
+		A76A5CC122CD673A00047603 /* pch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = pch.cpp; path = ../../test/pch.cpp; sourceTree = "<group>"; };
+		A76A5CC222CD673A00047603 /* pch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pch.h; path = ../../test/pch.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +114,8 @@
 		A76A5CB322CD5F2300047603 /* test */ = {
 			isa = PBXGroup;
 			children = (
+				A76A5CC122CD673A00047603 /* pch.cpp */,
+				A76A5CC222CD673A00047603 /* pch.h */,
 				A76A5CBC22CD641700047603 /* keytest.cpp */,
 			);
 			path = test;
@@ -232,6 +237,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A76A5CBD22CD641700047603 /* keytest.cpp in Sources */,
+				A76A5CC322CD673A00047603 /* pch.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

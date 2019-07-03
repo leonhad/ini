@@ -1,4 +1,3 @@
-// dllmain.cpp : Define o ponto de entrada para o aplicativo DLL.
 #include "dllutil.h"
 
 BOOL APIENTRY DllMain(HMODULE hModule,
@@ -16,4 +15,3 @@ BOOL APIENTRY DllMain(HMODULE hModule,
     }
     return TRUE;
 }
-

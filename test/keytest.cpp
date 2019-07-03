@@ -5,11 +5,13 @@
 using namespace ini;
 using namespace std;
 
-string valueTest() {
-	Key keys({ "name", "value" });
-	return keys.second;
+string valueTest()
+{
+    Key keys({ "name", "value" });
+    return keys.second;
 }
 
-TEST(KeyCase, Add) {
-	EXPECT_EQ("value", valueTest());
+TEST(KeyCase, Add)
+{
+    EXPECT_EQ("value", valueTest());
 }
