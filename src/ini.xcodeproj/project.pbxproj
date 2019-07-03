@@ -20,11 +20,22 @@
 		A76A5CA022CC323600047603 /* fileinterface.h in Headers */ = {isa = PBXBuildFile; fileRef = A76A5C9022CC323500047603 /* fileinterface.h */; };
 		A76A5CA122CC323600047603 /* key.h in Headers */ = {isa = PBXBuildFile; fileRef = A76A5C9122CC323500047603 /* key.h */; };
 		A76A5CA322CC327800047603 /* dllutil.h in Headers */ = {isa = PBXBuildFile; fileRef = A76A5CA222CC327800047603 /* dllutil.h */; };
-		A76A5CA822CC32F800047603 /* map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A76A5CA422CC32F700047603 /* map.cpp */; };
-		A76A5CA922CC32F800047603 /* list.h in Headers */ = {isa = PBXBuildFile; fileRef = A76A5CA522CC32F700047603 /* list.h */; };
-		A76A5CAA22CC32F800047603 /* map.h in Headers */ = {isa = PBXBuildFile; fileRef = A76A5CA622CC32F700047603 /* map.h */; };
-		A76A5CAB22CC32F800047603 /* list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A76A5CA722CC32F700047603 /* list.cpp */; };
+		A76A5CBB22CD63DD00047603 /* gtest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A76A5CBA22CD63DD00047603 /* gtest.framework */; };
+		A76A5CBD22CD641700047603 /* keytest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A76A5CBC22CD641700047603 /* keytest.cpp */; };
+		A76A5CBE22CD642F00047603 /* libini.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A76A5C7B22CC31FA00047603 /* libini.dylib */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A76A5CB022CD5F2300047603 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		A76A5C7B22CC31FA00047603 /* libini.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libini.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -41,10 +52,9 @@
 		A76A5C9022CC323500047603 /* fileinterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fileinterface.h; sourceTree = "<group>"; };
 		A76A5C9122CC323500047603 /* key.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = key.h; sourceTree = "<group>"; };
 		A76A5CA222CC327800047603 /* dllutil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dllutil.h; sourceTree = "<group>"; };
-		A76A5CA422CC32F700047603 /* map.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = map.cpp; sourceTree = "<group>"; };
-		A76A5CA522CC32F700047603 /* list.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = list.h; sourceTree = "<group>"; };
-		A76A5CA622CC32F700047603 /* map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = map.h; sourceTree = "<group>"; };
-		A76A5CA722CC32F700047603 /* list.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = list.cpp; sourceTree = "<group>"; };
+		A76A5CB222CD5F2300047603 /* test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = test; sourceTree = BUILT_PRODUCTS_DIR; };
+		A76A5CBA22CD63DD00047603 /* gtest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = gtest.framework; path = ../../../../../Library/Frameworks/gtest.framework; sourceTree = "<group>"; };
+		A76A5CBC22CD641700047603 /* keytest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = keytest.cpp; path = ../../test/keytest.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,17 +65,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A76A5CAF22CD5F2300047603 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A76A5CBE22CD642F00047603 /* libini.dylib in Frameworks */,
+				A76A5CBB22CD63DD00047603 /* gtest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		A76A5C7222CC31FA00047603 = {
 			isa = PBXGroup;
 			children = (
+				A76A5CB322CD5F2300047603 /* test */,
 				A76A5C7C22CC31FA00047603 /* Products */,
-				A76A5CA722CC32F700047603 /* list.cpp */,
-				A76A5CA522CC32F700047603 /* list.h */,
-				A76A5CA422CC32F700047603 /* map.cpp */,
-				A76A5CA622CC32F700047603 /* map.h */,
 				A76A5CA222CC327800047603 /* dllutil.h */,
 				A76A5C8222CC323500047603 /* fileinterface.cpp */,
 				A76A5C9022CC323500047603 /* fileinterface.h */,
@@ -79,6 +95,7 @@
 				A76A5C8922CC323500047603 /* memoryfile.h */,
 				A76A5C8F22CC323500047603 /* propertyfile.cpp */,
 				A76A5C8E22CC323500047603 /* propertyfile.h */,
+				A76A5CB922CD63DD00047603 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -86,8 +103,25 @@
 			isa = PBXGroup;
 			children = (
 				A76A5C7B22CC31FA00047603 /* libini.dylib */,
+				A76A5CB222CD5F2300047603 /* test */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		A76A5CB322CD5F2300047603 /* test */ = {
+			isa = PBXGroup;
+			children = (
+				A76A5CBC22CD641700047603 /* keytest.cpp */,
+			);
+			path = test;
+			sourceTree = "<group>";
+		};
+		A76A5CB922CD63DD00047603 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A76A5CBA22CD63DD00047603 /* gtest.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -101,10 +135,8 @@
 				A76A5CA122CC323600047603 /* key.h in Headers */,
 				A76A5C9622CC323600047603 /* inifile.h in Headers */,
 				A76A5C9A22CC323600047603 /* ini.h in Headers */,
-				A76A5CA922CC32F800047603 /* list.h in Headers */,
 				A76A5C9E22CC323600047603 /* propertyfile.h in Headers */,
 				A76A5CA322CC327800047603 /* dllutil.h in Headers */,
-				A76A5CAA22CC32F800047603 /* map.h in Headers */,
 				A76A5CA022CC323600047603 /* fileinterface.h in Headers */,
 				A76A5C9922CC323600047603 /* memoryfile.h in Headers */,
 			);
@@ -130,6 +162,23 @@
 			productReference = A76A5C7B22CC31FA00047603 /* libini.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
+		A76A5CB122CD5F2300047603 /* test */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A76A5CB622CD5F2300047603 /* Build configuration list for PBXNativeTarget "test" */;
+			buildPhases = (
+				A76A5CAE22CD5F2300047603 /* Sources */,
+				A76A5CAF22CD5F2300047603 /* Frameworks */,
+				A76A5CB022CD5F2300047603 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = test;
+			productName = test;
+			productReference = A76A5CB222CD5F2300047603 /* test */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -140,6 +189,9 @@
 				ORGANIZATIONNAME = "Leonardo Alves da Costa";
 				TargetAttributes = {
 					A76A5C7A22CC31FA00047603 = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+					A76A5CB122CD5F2300047603 = {
 						CreatedOnToolsVersion = 10.2.1;
 					};
 				};
@@ -157,6 +209,7 @@
 			projectRoot = "";
 			targets = (
 				A76A5C7A22CC31FA00047603 /* ini */,
+				A76A5CB122CD5F2300047603 /* test */,
 			);
 		};
 /* End PBXProject section */
@@ -166,13 +219,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A76A5CA822CC32F800047603 /* map.cpp in Sources */,
 				A76A5C9F22CC323600047603 /* propertyfile.cpp in Sources */,
 				A76A5C9222CC323600047603 /* fileinterface.cpp in Sources */,
-				A76A5CAB22CC32F800047603 /* list.cpp in Sources */,
 				A76A5C9B22CC323600047603 /* memoryfile.cpp in Sources */,
 				A76A5C9C22CC323600047603 /* inifile.cpp in Sources */,
 				A76A5C9522CC323600047603 /* groups.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A76A5CAE22CD5F2300047603 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A76A5CBD22CD641700047603 /* keytest.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,6 +377,32 @@
 			};
 			name = Release;
 		};
+		A76A5CB722CD5F2300047603 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9QU6UEYZY9;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		A76A5CB822CD5F2300047603 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9QU6UEYZY9;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -328,7 +413,7 @@
 				A76A5C7E22CC31FA00047603 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		A76A5C7F22CC31FA00047603 /* Build configuration list for PBXNativeTarget "ini" */ = {
 			isa = XCConfigurationList;
@@ -337,7 +422,16 @@
 				A76A5C8122CC31FA00047603 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
+		};
+		A76A5CB622CD5F2300047603 /* Build configuration list for PBXNativeTarget "test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A76A5CB722CD5F2300047603 /* Debug */,
+				A76A5CB822CD5F2300047603 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};

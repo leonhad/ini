@@ -14,7 +14,7 @@ IniFile::~IniFile()
 
 bool IniFile::open(string filename)
 {
-    clear(); 
+    clear();
     
     ifstream filein(filename, ios::in);
     if (!filein.is_open())
