@@ -8,10 +8,13 @@
 *.gcno
 .DS_Store
 .scannerwork
-cppunit.xmL
+default.profraw
+/out
+/googletest
 config.h
 config.log
 config.status
+*.dSYM
 *.log
 *.trs
 *.Po

@@ -95,7 +95,7 @@ bool IniFile::open(string filename)
                         {
                             break;
                         }
-                        //se n�o for espa�o manda ver.
+                        // continue if not space.
                         if (ctoken != ' ')
                         {
                             keytemp = keytemp + ctoken;

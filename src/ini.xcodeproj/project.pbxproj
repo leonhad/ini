@@ -20,10 +20,11 @@
 		A76A5CA022CC323600047603 /* fileinterface.h in Headers */ = {isa = PBXBuildFile; fileRef = A76A5C9022CC323500047603 /* fileinterface.h */; };
 		A76A5CA122CC323600047603 /* key.h in Headers */ = {isa = PBXBuildFile; fileRef = A76A5C9122CC323500047603 /* key.h */; };
 		A76A5CA322CC327800047603 /* dllutil.h in Headers */ = {isa = PBXBuildFile; fileRef = A76A5CA222CC327800047603 /* dllutil.h */; };
-		A76A5CBB22CD63DD00047603 /* gtest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A76A5CBA22CD63DD00047603 /* gtest.framework */; };
+		A76A5CBB22CD63DD00047603 /* gtest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A76A5CBA22CD63DD00047603 /* gtest.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		A76A5CBD22CD641700047603 /* keytest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A76A5CBC22CD641700047603 /* keytest.cpp */; };
 		A76A5CBE22CD642F00047603 /* libini.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A76A5C7B22CC31FA00047603 /* libini.dylib */; };
 		A76A5CC322CD673A00047603 /* pch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A76A5CC122CD673A00047603 /* pch.cpp */; };
+		A76A5CC622D1068C00047603 /* gtest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A76A5CC522D1068B00047603 /* gtest.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -58,6 +59,7 @@
 		A76A5CBC22CD641700047603 /* keytest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = keytest.cpp; path = ../../test/keytest.cpp; sourceTree = "<group>"; };
 		A76A5CC122CD673A00047603 /* pch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = pch.cpp; path = ../../test/pch.cpp; sourceTree = "<group>"; };
 		A76A5CC222CD673A00047603 /* pch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pch.h; path = ../../test/pch.h; sourceTree = "<group>"; };
+		A76A5CC522D1068B00047603 /* gtest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = gtest.cpp; path = ../../test/gtest.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 		A76A5CB322CD5F2300047603 /* test */ = {
 			isa = PBXGroup;
 			children = (
+				A76A5CC522D1068B00047603 /* gtest.cpp */,
 				A76A5CC122CD673A00047603 /* pch.cpp */,
 				A76A5CC222CD673A00047603 /* pch.h */,
 				A76A5CBC22CD641700047603 /* keytest.cpp */,
@@ -236,6 +239,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A76A5CC622D1068C00047603 /* gtest.cpp in Sources */,
 				A76A5CBD22CD641700047603 /* keytest.cpp in Sources */,
 				A76A5CC322CD673A00047603 /* pch.cpp in Sources */,
 			);
