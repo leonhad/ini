@@ -1,22 +1,12 @@
-/*
- * This file is part of INI.
- * Copyright (C) 2012 Leonardo Alves da Costa
- * mailto:leonhad AT gmail DOT com
- *
- * PDF Tools is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * PDF Tools is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
- */
-#pragma once
+// pch.h: esse é um arquivo de cabeçalho pré-compilado.
+// Os arquivos listados a seguir são compilados somente uma vez, melhorando o desempenho dos builds futuros.
+// Isso também afeta o desempenho do IntelliSense, incluindo a conclusão de código e muitos recursos de navegação de código.
+// No entanto, os arquivos listados aqui serão TODOS recompilados se qualquer um deles for atualizado entre builds.
+// Não adicione aqui arquivos que você atualizará com frequência, pois isso anula a vantagem de desempenho.
 
-#include "gtest/gtest.h"
+#ifndef PCH_H
+#define PCH_H
+
+// adicione os cabeçalhos que você deseja pré-compilar aqui
+
+#endif //PCH_H
