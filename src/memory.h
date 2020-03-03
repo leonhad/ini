@@ -17,12 +17,29 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-#include <stdlib.h>
-#include "fileinterface.h"
+#ifndef _memmoryfile_h
+#define _memmoryfile_h
 
-using namespace ini;
-using namespace std;
+#include "section.h"
+#include "dllutil.h"
+#include <string>
 
-FileInterface::FileInterface()
+namespace ini
 {
+	class EXPORT_INI Memory : public Section
+	{
+	public:
+		Memory();
+        Memory(std::string ini);
+
+		virtual ~Memory();
+		std::string Save();
+
+	private:
+		void ParseSection(std::string ini, unsigned int& current);
+		void ParseKey(std::string ini, std::string cgroup, unsigned int& current);
+		void ParseComment(std::string ini, unsigned int& current);
+	};
 }
+
+#endif

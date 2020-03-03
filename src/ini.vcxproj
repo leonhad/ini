@@ -151,22 +151,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="fileinterface.h" />
     <ClInclude Include="section.h" />
     <ClInclude Include="ini.h" />
     <ClInclude Include="inifile.h" />
     <ClInclude Include="key.h" />
-    <ClInclude Include="memoryfile.h" />
-    <ClInclude Include="propertyfile.h" />
+    <ClInclude Include="memory.h" />
     <ClInclude Include="dllutil.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
-    <ClCompile Include="fileinterface.cpp" />
     <ClCompile Include="section.cpp" />
     <ClCompile Include="inifile.cpp" />
-    <ClCompile Include="memoryfile.cpp" />
-    <ClCompile Include="propertyfile.cpp" />
+    <ClCompile Include="memory.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

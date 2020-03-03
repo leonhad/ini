@@ -17,20 +17,20 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-#include "memoryfile.h"
+#include "memory.h"
 
 using namespace ini;
 using namespace std;
 
-MemoryFile::MemoryFile() : Section()
+Memory::Memory() : Section()
 {
 }
 
-MemoryFile::~MemoryFile()
+Memory::~Memory()
 {
 }
 
-MemoryFile::MemoryFile(string ini)
+Memory::Memory(string ini)
 {
 	unsigned int current = 0;
 
@@ -64,7 +64,7 @@ MemoryFile::MemoryFile(string ini)
 	}
 }
 
-string MemoryFile::Save()
+string Memory::Save()
 {
 	string file;
 
@@ -79,7 +79,7 @@ string MemoryFile::Save()
 	return file;
 }
 
-void MemoryFile::ParseKey(string ini, string cgroup, unsigned int& current)
+void Memory::ParseKey(string ini, string cgroup, unsigned int& current)
 {
 	// Temporary key name.
 	string ckey = "";
@@ -136,7 +136,7 @@ void MemoryFile::ParseKey(string ini, string cgroup, unsigned int& current)
 	add(ckey, keytemp2);
 }
 
-void MemoryFile::ParseSection(string ini, unsigned int& current)
+void Memory::ParseSection(string ini, unsigned int& current)
 {
 	// Skip '[' char
 	current++;
@@ -157,7 +157,7 @@ void MemoryFile::ParseSection(string ini, unsigned int& current)
 	AddSection(section);
 }
 
-void MemoryFile::ParseComment(string ini, unsigned int& current)
+void Memory::ParseComment(string ini, unsigned int& current)
 {
 	// Skip ';' or '#' char
 	current++;

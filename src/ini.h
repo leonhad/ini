@@ -22,9 +22,7 @@
 
 #include "key.h"
 #include "section.h"
-#include "fileinterface.h"
 #include "inifile.h"
-#include "propertyfile.h"
-#include "memoryfile.h"
+#include "memory.h"
 
 #endif
