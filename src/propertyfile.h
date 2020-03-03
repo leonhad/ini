@@ -21,8 +21,8 @@
 #define propertyfile_h
 
 #include "fileinterface.h"
-#include "groups.h"
 #include "dllutil.h"
+#include "key.h"
 
 namespace ini
 {

@@ -152,7 +152,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="fileinterface.h" />
-    <ClInclude Include="groups.h" />
+    <ClInclude Include="section.h" />
     <ClInclude Include="ini.h" />
     <ClInclude Include="inifile.h" />
     <ClInclude Include="key.h" />
@@ -163,7 +163,7 @@
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="fileinterface.cpp" />
-    <ClCompile Include="groups.cpp" />
+    <ClCompile Include="section.cpp" />
     <ClCompile Include="inifile.cpp" />
     <ClCompile Include="memoryfile.cpp" />
     <ClCompile Include="propertyfile.cpp" />

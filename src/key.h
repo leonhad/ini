@@ -26,8 +26,8 @@
 
 namespace ini
 {
-    using Key = std::pair<std::string, std::string>;
-    using KeyList = std::vector<Key>;
+	using Key = std::pair<std::string, std::string>;
+	using KeyList = std::vector<Key>;
 }
 
 #endif

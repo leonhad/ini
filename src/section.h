@@ -29,20 +29,20 @@
 
 namespace ini
 {
-    using GroupList = std::map<std::string, KeyList *>;
+    using SectionList = std::map<std::string, KeyList *>;
     
-    class EXPORT_INI Groups
+    class EXPORT_INI Section
     {
     private:
-        GroupList m_groups;
+        SectionList m_groups;
         std::string current;
         
     public:
-        Groups();
-        ~Groups();
-        void add(std::string name);
+        Section();
+        ~Section();
+        void AddSection(std::string name);
         void remove(std::string name);
-        GroupList list();
+        SectionList list();
         KeyList *getKeyList(std::string group);
         KeyList *getCurrentKeys();
         void add(std::string group, std::string name, std::string data);
@@ -51,6 +51,11 @@ namespace ini
         std::string get(std::string group, std::string name);
         std::string get(std::string name);
         void clear();
+
+        std::string GetCurrentSection();
+        void SetCurrentSection(std::string current);
+
+        std::string GetDefaultSection();
     };
 }
 

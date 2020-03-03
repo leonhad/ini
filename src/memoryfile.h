@@ -21,20 +21,26 @@
 #define _memmoryfile_h
 
 #include "fileinterface.h"
-#include "groups.h"
+#include "section.h"
 #include "dllutil.h"
 #include <string>
 
 namespace ini
 {
-    class EXPORT_INI MemoryFile : public Groups
-    {
-    public:
-        MemoryFile();
-        virtual ~MemoryFile();
-        void open(std::string ini);
-        std::string save();
-    };
+	class EXPORT_INI MemoryFile : public Section
+	{
+	public:
+		MemoryFile();
+        MemoryFile(std::string ini);
+
+		virtual ~MemoryFile();
+		std::string Save();
+
+	private:
+		void ParseSection(std::string ini, unsigned int& current);
+		void ParseKey(std::string ini, std::string cgroup, unsigned int& current);
+		void ParseComment(std::string ini, unsigned int& current);
+	};
 }
 
 #endif

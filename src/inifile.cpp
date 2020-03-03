@@ -23,7 +23,7 @@
 using namespace std;
 using namespace ini;
 
-IniFile::IniFile() : Groups()
+IniFile::IniFile() : Section()
 {
 }
 
@@ -75,7 +75,7 @@ bool IniFile::open(string filename)
                     }
                 }
                 cgroup = grouptemp.c_str();
-                add(cgroup);
+                AddSection(cgroup);
                 break;
                 //chave
             default:

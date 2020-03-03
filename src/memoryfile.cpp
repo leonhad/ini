@@ -22,7 +22,7 @@
 using namespace ini;
 using namespace std;
 
-MemoryFile::MemoryFile() : Groups()
+MemoryFile::MemoryFile() : Section()
 {
 }
 
@@ -30,117 +30,146 @@ MemoryFile::~MemoryFile()
 {
 }
 
-void MemoryFile::open(string ini)
+MemoryFile::MemoryFile(string ini)
 {
-    char ctoken;
-    unsigned int current = 0;
-    //criação temporária do nome do grupo.
-    string grouptemp;
-    const char *ckey;
-    const char *cgroup = nullptr;
-    //criação temporária do nome da chave.
-    string keytemp;
-    while (current <= ini.size())
-    {
-        ctoken = ini[current];
-        current++;
-        switch (ctoken)
-        {
-                //grupo
-            case '[':
-                //comece com a string vazia.
-                grouptemp = "";
-                while (current < ini.size())
-                {
-                    ctoken = ini[current];
-                    current++;
-                    if (ctoken == ']' || ctoken == '\n')
-                    {
-                        break;
-                    }
-                    //para erros e outras coisas mais.
-                    switch (ctoken)
-                    {
-                        case '[':
-                            break;
-                        default:
-                            grouptemp = grouptemp + ctoken;
-                    }
-                }
-                cgroup = grouptemp.c_str();
-                add(cgroup);
-                break;
-                //chave
-            default:
-                switch (ctoken)
-            {
-                case ' ':
-                    break;
-                case '\n':
-                    break;
-                default:
-                    keytemp = "";
-                    while (current <= ini.size())
-                    {
-                        //se for igual a '=' saia do loop.
-                        if (ctoken == '=')
-                        {
-                            break;
-                        }
-                        //se não for espaço manda ver.
-                        if (ctoken != ' ')
-                        {
-                            keytemp = keytemp + ctoken;
-                        }
-                        ctoken = ini[current];
-                        current++;
-                    }
-                    //se não possuir o '=' na linha pule ela.
-                    if (ctoken == '\n')
-                    {
-                        break;
-                    }
-                    ckey = keytemp.c_str();
-                    
-                    while (current <= ini.size())
-                    {
-                        ctoken = ini[current];
-                        current++;
-                        
-                        if (ctoken == '\n' || ctoken != ' ')
-                        {
-                            break;
-                        }
-                    }
-                    string keytemp2;
-                    while (current <= ini.size())
-                    {
-                        //se for uma nova linha saia do loop.
-                        if (ctoken == '\n')
-                        {
-                            break;
-                        }
-                        keytemp2 = keytemp2 + ctoken;
-                        ctoken = ini[current];
-                        current++;
-                    }
-                    add(cgroup, ckey, keytemp2);
-            }
-        }
-    }
+	unsigned int current = 0;
+
+	// Current section name.
+	string section = GetCurrentSection();
+
+	while (current <= ini.size())
+	{
+		const char ctoken = ini[current];
+
+		switch (ctoken)
+		{
+		case '[':
+			ParseSection(ini, current);
+			break;
+
+		case ';':
+		case '#':
+			ParseComment(ini, current);
+			break;
+
+		case ' ':
+		case '\n':
+			// Ignore spaces and new lines
+			current++;
+			break;
+
+		default:
+			ParseKey(ini, section, current);
+		}
+	}
 }
 
-string MemoryFile::save()
+string MemoryFile::Save()
 {
-    string file;
-    
-    for (auto group : list())
-    {
-        file += "[" + group.first + "]\n";
-        for (const auto& key : *group.second)
-        {
-            file += key.first + "=" + key.second + "\n";
-        }
-    }
-    return file;
+	string file;
+
+	for (auto group : list())
+	{
+		file += "[" + group.first + "]\n";
+		for (const auto& key : *group.second)
+		{
+			file += key.first + "=" + key.second + "\n";
+		}
+	}
+	return file;
+}
+
+void MemoryFile::ParseKey(string ini, string cgroup, unsigned int& current)
+{
+	// Temporary key name.
+	string ckey = "";
+	do
+	{
+		// If token is a '=', break loop.
+		if (ini[current] == '=')
+		{
+			break;
+		}
+
+		// Add token if is not an whitespace.
+		if (ini[current] != ' ')
+		{
+			ckey += ini[current];
+		}
+
+		current++;
+	} while (current <= ini.size());
+
+	// If there is not a '=', skip that line.
+	if (ini[current] == '\n')
+	{
+		return;
+	}
+
+	// Skip '=' char
+	current++;
+
+	// skip spaces
+	while (current <= ini.size())
+	{
+		const char ctoken = ini[current];
+		if (ctoken == '\n' || ctoken != ' ')
+		{
+			break;
+		}
+
+		current++;
+	}
+
+	string keytemp2;
+	while (current <= ini.size())
+	{
+		//se for uma nova linha saia do loop.
+		if (ini[current] == '\n')
+		{
+			break;
+		}
+		keytemp2 += ini[current];
+		current++;
+	}
+
+	add(ckey, keytemp2);
+}
+
+void MemoryFile::ParseSection(string ini, unsigned int& current)
+{
+	// Skip '[' char
+	current++;
+
+	string section = "";
+	while (current < ini.size())
+	{
+		const char ctoken = ini[current];
+		current++;
+		if (ctoken == ']' || ctoken == '\n')
+		{
+			break;
+		}
+
+		section += ctoken;
+	}
+
+	AddSection(section);
+}
+
+void MemoryFile::ParseComment(string ini, unsigned int& current)
+{
+	// Skip ';' or '#' char
+	current++;
+
+	string section = "";
+	while (current < ini.size())
+	{
+		if (ini[current] == '\n')
+		{
+			break;
+		}
+
+		current++;
+	}
 }

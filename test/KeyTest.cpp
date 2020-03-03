@@ -6,10 +6,9 @@ using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 #include "../src/key.h"
 #include <string>
 
-using namespace ini;
 using namespace std;
 
-namespace Interface
+namespace ini
 {
 	TEST_CLASS(KeyTest)
 	{

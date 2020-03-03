@@ -17,23 +17,38 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-#include "groups.h"
+#include "section.h"
 #include <map>
 
 using namespace std;
 using namespace ini;
 
-Groups::Groups()
+Section::Section()
 {
-    current = nullptr;
+    AddSection(GetDefaultSection());
 }
 
-Groups::~Groups()
+string Section::GetDefaultSection()
+{
+    return "";
+}
+
+Section::~Section()
 {
     clear();
 }
 
-void Groups::clear()
+string Section::GetCurrentSection()
+{
+    return current;
+}
+
+void Section::SetCurrentSection(std::string current)
+{
+    this->current = current;
+}
+
+void Section::clear()
 {
     for (const auto &group : m_groups)
     {
@@ -42,25 +57,25 @@ void Groups::clear()
     m_groups.clear();
 }
 
-void Groups::remove(string name)
+void Section::remove(string name)
 {
     delete m_groups[name];
     m_groups.erase(name);
     current = nullptr;
 }
 
-void Groups::add(string name)
+void Section::AddSection(string name)
 {
     m_groups[name] = new KeyList{};
     current = name;
 }
 
-GroupList Groups::list()
+SectionList Section::list()
 {
     return m_groups;
 }
 
-KeyList *Groups::getKeyList(string name)
+KeyList * Section::getKeyList(string name)
 {
     current = name;
     
@@ -74,12 +89,12 @@ KeyList *Groups::getKeyList(string name)
     return nullptr;
 }
 
-KeyList *Groups::getCurrentKeys()
+KeyList * Section::getCurrentKeys()
 {
     return getKeyList(current);
 }
 
-void Groups::add(string group, string name, string data)
+void Section::add(string group, string name, string data)
 {
     current = group;
     
@@ -90,12 +105,12 @@ void Groups::add(string group, string name, string data)
     }
 }
 
-void Groups::add(string name, string data)
+void Section::add(string name, string data)
 {
     add(current, name, data);
 }
 
-bool Groups::remove(string group, string name)
+bool Section::remove(string group, string name)
 {
     current = group;
     
@@ -115,7 +130,7 @@ bool Groups::remove(string group, string name)
     return false;
 }
 
-string Groups::get(string group, string name)
+string Section::get(string group, string name)
 {
     current = group;
     
@@ -133,7 +148,7 @@ string Groups::get(string group, string name)
     return "";
 }
 
-string Groups::get(string name)
+string Section::get(string name)
 {
     return get(current, name);
 }

@@ -21,13 +21,13 @@
 #define _inifile_h
 
 #include "fileinterface.h"
-#include "groups.h"
+#include "section.h"
 #include "dllutil.h"
 #include <string>
 
 namespace ini
 {
-    class EXPORT_INI IniFile : public Groups, public FileInterface
+    class EXPORT_INI IniFile : public Section, public FileInterface
     {
     public:
         IniFile();

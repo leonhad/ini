@@ -21,7 +21,7 @@
 #define _ini_h
 
 #include "key.h"
-#include "groups.h"
+#include "section.h"
 #include "fileinterface.h"
 #include "inifile.h"
 #include "propertyfile.h"
