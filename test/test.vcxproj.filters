@@ -21,7 +21,7 @@
     <ClCompile Include="KeyTest.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
-    <ClCompile Include="MemoryFileTest.cpp">
+    <ClCompile Include="MemoryTest.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
   </ItemGroup>
