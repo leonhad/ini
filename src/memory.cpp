@@ -30,41 +30,42 @@ Memory::~Memory()
 {
 }
 
-Memory::Memory(string ini)
+Memory::Memory(istream &in)
 {
 	unsigned int current = 0;
 
 	// Current section name.
 	string section = GetCurrentSection();
+	char ctoken;
 
-	while (current <= ini.size())
+	while (not in.eof())
 	{
-		const char ctoken = ini[current];
+		in.get(ctoken);
 
 		switch (ctoken)
 		{
 		case '[':
-			ParseSection(ini, current);
+			ParseSection(in);
 			break;
 
 		case ';':
 		case '#':
-			ParseComment(ini, current);
+			ParseComment(in);
 			break;
 
 		case ' ':
 		case '\n':
 			// Ignore spaces and new lines
-			current++;
 			break;
 
 		default:
-			ParseKey(ini, section, current);
+			in.unget();
+			ParseKey(in, section);
 		}
 	}
 }
 
-string Memory::Save()
+string Memory::ToString()
 {
 	string file;
 
@@ -79,93 +80,98 @@ string Memory::Save()
 	return file;
 }
 
-void Memory::ParseKey(string ini, string cgroup, unsigned int& current)
+void Memory::ParseKey(istream &in, string &cgroup)
 {
 	// Temporary key name.
 	string ckey = "";
+
+	char current;
 	do
 	{
+		in.get(current);
+
 		// If token is a '=', break loop.
-		if (ini[current] == '=')
+		if (current == '=')
 		{
 			break;
 		}
 
 		// Add token if is not an whitespace.
-		if (ini[current] != ' ')
+		if (current != ' ')
 		{
-			ckey += ini[current];
+			ckey += current;
 		}
-
-		current++;
-	} while (current <= ini.size());
+	} while (not in.eof());
 
 	// If there is not a '=', skip that line.
-	if (ini[current] == '\n')
+	if (current == '\n')
 	{
 		return;
 	}
 
 	// Skip '=' char
-	current++;
+	if (current == '=')
+	{
+		in.get(current);
+	}
 
 	// skip spaces
-	while (current <= ini.size())
+	while (not in.eof())
 	{
-		const char ctoken = ini[current];
-		if (ctoken == '\n' || ctoken != ' ')
+		if (current == '\n' || current != ' ')
 		{
 			break;
 		}
 
-		current++;
+		in.get(current);
 	}
 
 	string keytemp2;
-	while (current <= ini.size())
+	while (not in.eof())
 	{
 		//se for uma nova linha saia do loop.
-		if (ini[current] == '\n')
+		if (current == '\n')
 		{
 			break;
 		}
-		keytemp2 += ini[current];
-		current++;
+		keytemp2 += current;
+		
+		in.get(current);
 	}
 
 	add(ckey, keytemp2);
 }
 
-void Memory::ParseSection(string ini, unsigned int& current)
+void Memory::ParseSection(istream &in)
 {
-	// Skip '[' char
-	current++;
-
+	char current;
 	string section = "";
-	while (current < ini.size())
+
+	while (not in.eof())
 	{
-		const char ctoken = ini[current];
-		current++;
-		if (ctoken == ']' || ctoken == '\n')
+		in.get(current);
+
+		if (current == ']' || current == '\n')
 		{
 			break;
 		}
 
-		section += ctoken;
+		section += current;
 	}
 
 	AddSection(section);
 }
 
-void Memory::ParseComment(string ini, unsigned int& current)
+void Memory::ParseComment(istream &in)
 {
-	// Skip ';' or '#' char
-	current++;
-
+	char current;
 	string section = "";
-	while (current < ini.size())
+
+	while (not in.eof())
 	{
-		if (ini[current] == '\n')
+		in.get(current);
+
+		if (current == '\n')
 		{
 			break;
 		}

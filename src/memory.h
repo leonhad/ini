@@ -23,6 +23,7 @@
 #include "section.h"
 #include "dllutil.h"
 #include <string>
+#include <iostream>
 
 namespace ini
 {
@@ -30,15 +31,15 @@ namespace ini
 	{
 	public:
 		Memory();
-        Memory(std::string ini);
+        Memory(std::istream &in);
 
 		virtual ~Memory();
-		std::string Save();
+		std::string ToString();
 
 	private:
-		void ParseSection(std::string ini, unsigned int& current);
-		void ParseKey(std::string ini, std::string cgroup, unsigned int& current);
-		void ParseComment(std::string ini, unsigned int& current);
+		void ParseSection(std::istream &in);
+		void ParseKey(std::istream &in, std::string &cgroup);
+		void ParseComment(std::istream &in);
 	};
 }
 

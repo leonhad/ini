@@ -20,20 +20,19 @@
 #ifndef _inifile_h
 #define _inifile_h
 
-#include "fileinterface.h"
 #include "section.h"
 #include "dllutil.h"
 #include <string>
 
 namespace ini
 {
-    class EXPORT_INI IniFile : public Section, public FileInterface
+    class EXPORT_INI IniFile : public Section
     {
     public:
         IniFile();
         virtual ~IniFile();
-        virtual bool open(std::string filename) override;
-        virtual void save(std::string filename) override;
+        bool open(std::string filename);
+        void save(std::string filename);
     };
 }
 
