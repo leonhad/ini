@@ -151,15 +151,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="section.h" />
-    <ClInclude Include="ini.h" />
-    <ClInclude Include="key.h" />
     <ClInclude Include="dllutil.h" />
+    <ClInclude Include="Ini.h" />
+    <ClInclude Include="Key.h" />
+    <ClInclude Include="Section.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
-    <ClCompile Include="section.cpp" />
-    <ClCompile Include="ini.cpp" />
+    <ClCompile Include="Ini.cpp" />
+    <ClCompile Include="Section.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
