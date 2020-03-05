@@ -17,20 +17,16 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-#include "memory.h"
+#include "ini.h"
 
 using namespace ini;
 using namespace std;
 
-Memory::Memory() : Section()
+Ini::Ini() : Section()
 {
 }
 
-Memory::~Memory()
-{
-}
-
-Memory::Memory(istream &in)
+void Ini::Load(istream &in)
 {
 	unsigned int current = 0;
 
@@ -65,7 +61,7 @@ Memory::Memory(istream &in)
 	}
 }
 
-string Memory::ToString()
+string Ini::ToString()
 {
 	string file;
 
@@ -80,7 +76,19 @@ string Memory::ToString()
 	return file;
 }
 
-void Memory::ParseKey(istream &in, string &cgroup)
+void Ini::Save(std::ostream& out)
+{
+	for (auto group : list())
+	{
+		out << "[" << group.first << "]\n";
+		for (const auto& key : *group.second)
+		{
+			out << key.first << "=" << key.second << "\n";
+		}
+	}
+}
+
+void Ini::ParseKey(istream &in, string &cgroup)
 {
 	// Temporary key name.
 	string ckey = "";
@@ -142,7 +150,7 @@ void Memory::ParseKey(istream &in, string &cgroup)
 	add(ckey, keytemp2);
 }
 
-void Memory::ParseSection(istream &in)
+void Ini::ParseSection(istream &in)
 {
 	char current;
 	string section = "";
@@ -162,7 +170,7 @@ void Memory::ParseSection(istream &in)
 	AddSection(section);
 }
 
-void Memory::ParseComment(istream &in)
+void Ini::ParseComment(istream &in)
 {
 	char current;
 	string section = "";

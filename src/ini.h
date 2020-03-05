@@ -22,7 +22,26 @@
 
 #include "key.h"
 #include "section.h"
-#include "inifile.h"
-#include "memory.h"
+
+#include <iostream>
+
+namespace ini
+{
+    class EXPORT_INI Ini : public Section
+    {
+    public:
+        Ini();
+
+        void Load(std::istream& in);
+        void Save(std::ostream& out);
+
+        std::string ToString();
+
+    private:
+        void ParseSection(std::istream& in);
+        void ParseKey(std::istream& in, std::string& cgroup);
+        void ParseComment(std::istream& in);
+    };
+}
 
 #endif
