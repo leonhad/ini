@@ -1,5 +1,5 @@
 AC_PREREQ(2.62)
-AC_INIT([libini], [0.0.1], [leonhad@gmail.com], [https://github.com/leonhad/ini])
+AC_INIT([libini], [1.0.0], [leonhad@gmail.com], [https://github.com/leonhad/ini])
 AM_INIT_AUTOMAKE([-Wall tar-ustar no-define nostdinc subdir-objects])
 AC_CONFIG_SRCDIR([config.h.in])
 AC_CONFIG_MACRO_DIR([m4])
@@ -41,6 +41,5 @@ LT_INIT
 AC_LIBTOOL_WIN32_DLL
 
 AC_CONFIG_FILES([Makefile
-                 src/Makefile
-                 test/Makefile])
+                 src/Makefile])
 AC_OUTPUT

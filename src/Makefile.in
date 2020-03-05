@@ -133,9 +133,7 @@ am__uninstall_files_from_dir = { \
 am__installdirs = "$(DESTDIR)$(libdir)" "$(DESTDIR)$(libini_ladir)"
 LTLIBRARIES = $(lib_LTLIBRARIES)
 libini_la_LIBADD =
-am_libini_la_OBJECTS = libini_la-fileinterface.lo libini_la-groups.lo \
-	libini_la-inifile.lo libini_la-memoryfile.lo \
-	libini_la-propertyfile.lo
+am_libini_la_OBJECTS = libini_la-Section.lo libini_la-Ini.lo
 nodist_libini_la_OBJECTS =
 libini_la_OBJECTS = $(am_libini_la_OBJECTS) \
 	$(nodist_libini_la_OBJECTS)
@@ -161,11 +159,8 @@ am__v_at_1 =
 DEFAULT_INCLUDES = 
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__maybe_remake_depfiles = depfiles
-am__depfiles_remade = ./$(DEPDIR)/libini_la-fileinterface.Plo \
-	./$(DEPDIR)/libini_la-groups.Plo \
-	./$(DEPDIR)/libini_la-inifile.Plo \
-	./$(DEPDIR)/libini_la-memoryfile.Plo \
-	./$(DEPDIR)/libini_la-propertyfile.Plo
+am__depfiles_remade = ./$(DEPDIR)/libini_la-Ini.Plo \
+	./$(DEPDIR)/libini_la-Section.Plo
 am__mv = mv -f
 CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
 	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
@@ -338,25 +333,18 @@ top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 lib_LTLIBRARIES = libini.la
 libini_la_SOURCES = \
-    fileinterface.cpp \
-    groups.cpp \
-    inifile.cpp \
-    memoryfile.cpp \
-    propertyfile.cpp
+    Section.cpp \
+    Ini.cpp
 
 libini_ladir = $(includedir)/ini
 libini_la_HEADERS = \
-	ini.h \
-	fileinterface.h \
-    groups.h \
-    inifile.h \
-    key.h \
-    memoryfile.h \
-    propertyfile.h
+	Ini.h \
+    Section.h \
+	Key.h
 
 libini_la_CXXFLAGS = $(AM_CXXFLAGS)
 libini_la_CPPFLAGS = $(AM_CPPFLAGS)
-libini_la_LDFLAGS = -no-undefined -version-info 0:0:0
+libini_la_LDFLAGS = -no-undefined -version-info 1:0:0
 nodist_libini_la_SOURCES = $(BUILT_SOURCES)
 all: all-am
 
@@ -436,11 +424,8 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libini_la-fileinterface.Plo@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libini_la-groups.Plo@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libini_la-inifile.Plo@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libini_la-memoryfile.Plo@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libini_la-propertyfile.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libini_la-Ini.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libini_la-Section.Plo@am__quote@ # am--include-marker
 
 $(am__depfiles_remade):
 	@$(MKDIR_P) $(@D)
@@ -472,40 +457,19 @@ am--depfiles: $(am__depfiles_remade)
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LTCXXCOMPILE) -c -o $@ $<
 
-libini_la-fileinterface.lo: fileinterface.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libini_la_CPPFLAGS) $(CPPFLAGS) $(libini_la_CXXFLAGS) $(CXXFLAGS) -MT libini_la-fileinterface.lo -MD -MP -MF $(DEPDIR)/libini_la-fileinterface.Tpo -c -o libini_la-fileinterface.lo `test -f 'fileinterface.cpp' || echo '$(srcdir)/'`fileinterface.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libini_la-fileinterface.Tpo $(DEPDIR)/libini_la-fileinterface.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fileinterface.cpp' object='libini_la-fileinterface.lo' libtool=yes @AMDEPBACKSLASH@
+libini_la-Section.lo: Section.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libini_la_CPPFLAGS) $(CPPFLAGS) $(libini_la_CXXFLAGS) $(CXXFLAGS) -MT libini_la-Section.lo -MD -MP -MF $(DEPDIR)/libini_la-Section.Tpo -c -o libini_la-Section.lo `test -f 'Section.cpp' || echo '$(srcdir)/'`Section.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libini_la-Section.Tpo $(DEPDIR)/libini_la-Section.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='Section.cpp' object='libini_la-Section.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libini_la_CPPFLAGS) $(CPPFLAGS) $(libini_la_CXXFLAGS) $(CXXFLAGS) -c -o libini_la-fileinterface.lo `test -f 'fileinterface.cpp' || echo '$(srcdir)/'`fileinterface.cpp
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libini_la_CPPFLAGS) $(CPPFLAGS) $(libini_la_CXXFLAGS) $(CXXFLAGS) -c -o libini_la-Section.lo `test -f 'Section.cpp' || echo '$(srcdir)/'`Section.cpp
 
-libini_la-groups.lo: groups.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libini_la_CPPFLAGS) $(CPPFLAGS) $(libini_la_CXXFLAGS) $(CXXFLAGS) -MT libini_la-groups.lo -MD -MP -MF $(DEPDIR)/libini_la-groups.Tpo -c -o libini_la-groups.lo `test -f 'groups.cpp' || echo '$(srcdir)/'`groups.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libini_la-groups.Tpo $(DEPDIR)/libini_la-groups.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='groups.cpp' object='libini_la-groups.lo' libtool=yes @AMDEPBACKSLASH@
+libini_la-Ini.lo: Ini.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libini_la_CPPFLAGS) $(CPPFLAGS) $(libini_la_CXXFLAGS) $(CXXFLAGS) -MT libini_la-Ini.lo -MD -MP -MF $(DEPDIR)/libini_la-Ini.Tpo -c -o libini_la-Ini.lo `test -f 'Ini.cpp' || echo '$(srcdir)/'`Ini.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libini_la-Ini.Tpo $(DEPDIR)/libini_la-Ini.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='Ini.cpp' object='libini_la-Ini.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libini_la_CPPFLAGS) $(CPPFLAGS) $(libini_la_CXXFLAGS) $(CXXFLAGS) -c -o libini_la-groups.lo `test -f 'groups.cpp' || echo '$(srcdir)/'`groups.cpp
-
-libini_la-inifile.lo: inifile.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libini_la_CPPFLAGS) $(CPPFLAGS) $(libini_la_CXXFLAGS) $(CXXFLAGS) -MT libini_la-inifile.lo -MD -MP -MF $(DEPDIR)/libini_la-inifile.Tpo -c -o libini_la-inifile.lo `test -f 'inifile.cpp' || echo '$(srcdir)/'`inifile.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libini_la-inifile.Tpo $(DEPDIR)/libini_la-inifile.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='inifile.cpp' object='libini_la-inifile.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libini_la_CPPFLAGS) $(CPPFLAGS) $(libini_la_CXXFLAGS) $(CXXFLAGS) -c -o libini_la-inifile.lo `test -f 'inifile.cpp' || echo '$(srcdir)/'`inifile.cpp
-
-libini_la-memoryfile.lo: memoryfile.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libini_la_CPPFLAGS) $(CPPFLAGS) $(libini_la_CXXFLAGS) $(CXXFLAGS) -MT libini_la-memoryfile.lo -MD -MP -MF $(DEPDIR)/libini_la-memoryfile.Tpo -c -o libini_la-memoryfile.lo `test -f 'memoryfile.cpp' || echo '$(srcdir)/'`memoryfile.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libini_la-memoryfile.Tpo $(DEPDIR)/libini_la-memoryfile.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='memoryfile.cpp' object='libini_la-memoryfile.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libini_la_CPPFLAGS) $(CPPFLAGS) $(libini_la_CXXFLAGS) $(CXXFLAGS) -c -o libini_la-memoryfile.lo `test -f 'memoryfile.cpp' || echo '$(srcdir)/'`memoryfile.cpp
-
-libini_la-propertyfile.lo: propertyfile.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libini_la_CPPFLAGS) $(CPPFLAGS) $(libini_la_CXXFLAGS) $(CXXFLAGS) -MT libini_la-propertyfile.lo -MD -MP -MF $(DEPDIR)/libini_la-propertyfile.Tpo -c -o libini_la-propertyfile.lo `test -f 'propertyfile.cpp' || echo '$(srcdir)/'`propertyfile.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libini_la-propertyfile.Tpo $(DEPDIR)/libini_la-propertyfile.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='propertyfile.cpp' object='libini_la-propertyfile.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libini_la_CPPFLAGS) $(CPPFLAGS) $(libini_la_CXXFLAGS) $(CXXFLAGS) -c -o libini_la-propertyfile.lo `test -f 'propertyfile.cpp' || echo '$(srcdir)/'`propertyfile.cpp
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libini_la_CPPFLAGS) $(CPPFLAGS) $(libini_la_CXXFLAGS) $(CXXFLAGS) -c -o libini_la-Ini.lo `test -f 'Ini.cpp' || echo '$(srcdir)/'`Ini.cpp
 
 mostlyclean-libtool:
 	-rm -f *.lo
@@ -662,11 +626,8 @@ clean-am: clean-generic clean-libLTLIBRARIES clean-libtool \
 	mostlyclean-am
 
 distclean: distclean-am
-		-rm -f ./$(DEPDIR)/libini_la-fileinterface.Plo
-	-rm -f ./$(DEPDIR)/libini_la-groups.Plo
-	-rm -f ./$(DEPDIR)/libini_la-inifile.Plo
-	-rm -f ./$(DEPDIR)/libini_la-memoryfile.Plo
-	-rm -f ./$(DEPDIR)/libini_la-propertyfile.Plo
+		-rm -f ./$(DEPDIR)/libini_la-Ini.Plo
+	-rm -f ./$(DEPDIR)/libini_la-Section.Plo
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-tags
@@ -712,11 +673,8 @@ install-ps-am:
 installcheck-am:
 
 maintainer-clean: maintainer-clean-am
-		-rm -f ./$(DEPDIR)/libini_la-fileinterface.Plo
-	-rm -f ./$(DEPDIR)/libini_la-groups.Plo
-	-rm -f ./$(DEPDIR)/libini_la-inifile.Plo
-	-rm -f ./$(DEPDIR)/libini_la-memoryfile.Plo
-	-rm -f ./$(DEPDIR)/libini_la-propertyfile.Plo
+		-rm -f ./$(DEPDIR)/libini_la-Ini.Plo
+	-rm -f ./$(DEPDIR)/libini_la-Section.Plo
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 
