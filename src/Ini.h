@@ -20,8 +20,8 @@
 #ifndef _ini_h
 #define _ini_h
 
-#include "key.h"
-#include "section.h"
+#include "Key.h"
+#include "Section.h"
 
 #include <iostream>
 

@@ -10,7 +10,6 @@
 .scannerwork
 default.profraw
 /out
-/googletest
 config.h
 config.log
 config.status

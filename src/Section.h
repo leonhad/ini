@@ -21,7 +21,7 @@
 #define _groups_h
 
 #include "dllutil.h"
-#include "key.h"
+#include "Key.h"
 #include <string>
 #include <vector>
 #include <map>

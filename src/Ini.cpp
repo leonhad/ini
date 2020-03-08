@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-#include "ini.h"
+#include "Ini.h"
 
 using namespace ini;
 using namespace std;
@@ -28,8 +28,6 @@ Ini::Ini() : Section()
 
 void Ini::Load(istream &in)
 {
-	unsigned int current = 0;
-
 	// Current section name.
 	string section = GetCurrentSection();
 	char ctoken;
