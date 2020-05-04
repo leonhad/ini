@@ -1,8 +1,10 @@
 #!/bin/bash
 
+make clean
+
 rm -rf out/
 build-wrapper --out-dir out/ make all
-make check -j
+make check
 # valgrind --leak-check=full --show-leak-kinds=all -s --xml=yes --xml-file=out/valgrind.xml test/gtest --gtest_output=xml:out/xunit.xml
 test/gtest --gtest_output=xml:out/xunit.xml
 gcovr -x -r . > out/gcov.xml

@@ -23,10 +23,6 @@
 		A7CD31C02415BB340013DF2B /* Key.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Key.h; sourceTree = "<group>"; };
 		A7CD31C12415BB350013DF2B /* Section.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Section.h; sourceTree = "<group>"; };
 		A7CD31C22415BB350013DF2B /* Section.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Section.cpp; sourceTree = "<group>"; };
-		A7CD31D02415BC260013DF2B /* inia.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = inia.hpp; sourceTree = "<group>"; };
-		A7CD31D22415BC260013DF2B /* iniaPriv.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = iniaPriv.hpp; sourceTree = "<group>"; };
-		A7CD31D42415BC260013DF2B /* inia.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = inia.cpp; sourceTree = "<group>"; };
-		A7CD31DF2415BC410013DF2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,8 +45,6 @@
 				A7CD31C02415BB340013DF2B /* Key.h */,
 				A7CD31C22415BB350013DF2B /* Section.cpp */,
 				A7CD31C12415BB350013DF2B /* Section.h */,
-				A7CD31CF2415BC260013DF2B /* inia */,
-				A7CD31DE2415BC410013DF2B /* inib */,
 				A76A5C7C22CC31FA00047603 /* Products */,
 				A76A5CB922CD63DD00047603 /* Frameworks */,
 			);
@@ -69,24 +63,6 @@
 			children = (
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		A7CD31CF2415BC260013DF2B /* inia */ = {
-			isa = PBXGroup;
-			children = (
-				A7CD31D02415BC260013DF2B /* inia.hpp */,
-				A7CD31D22415BC260013DF2B /* iniaPriv.hpp */,
-				A7CD31D42415BC260013DF2B /* inia.cpp */,
-			);
-			path = inia;
-			sourceTree = "<group>";
-		};
-		A7CD31DE2415BC410013DF2B /* inib */ = {
-			isa = PBXGroup;
-			children = (
-				A7CD31DF2415BC410013DF2B /* Info.plist */,
-			);
-			path = inib;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -4644,6 +4644,41 @@ else
   :
 fi
 
+        { $as_echo "$as_me:${as_lineno-$LINENO}: checking whether C compiler accepts -fdiagnostics-show-option" >&5
+$as_echo_n "checking whether C compiler accepts -fdiagnostics-show-option... " >&6; }
+if ${ax_cv_check_cflags___fdiagnostics_show_option+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+
+  ax_check_save_flags=$CFLAGS
+  CFLAGS="$CFLAGS  -fdiagnostics-show-option"
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+
+int
+main ()
+{
+
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_compile "$LINENO"; then :
+  ax_cv_check_cflags___fdiagnostics_show_option=yes
+else
+  ax_cv_check_cflags___fdiagnostics_show_option=no
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
+  CFLAGS=$ax_check_save_flags
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ax_cv_check_cflags___fdiagnostics_show_option" >&5
+$as_echo "$ax_cv_check_cflags___fdiagnostics_show_option" >&6; }
+if test "x$ax_cv_check_cflags___fdiagnostics_show_option" = xyes; then :
+  CXXFLAGS="$CXXFLAGS -fdiagnostics-show-option"
+else
+  :
+fi
+
 
                 { $as_echo "$as_me:${as_lineno-$LINENO}: checking whether C compiler accepts -ftest-coverage" >&5
 $as_echo_n "checking whether C compiler accepts -ftest-coverage... " >&6; }
@@ -18806,7 +18841,9 @@ $as_echo X/"$am_mf" |
     { { $as_echo "$as_me:${as_lineno-$LINENO}: error: in \`$ac_pwd':" >&5
 $as_echo "$as_me: error: in \`$ac_pwd':" >&2;}
 as_fn_error $? "Something went wrong bootstrapping makefile fragments
-    for automatic dependency tracking.  Try re-running configure with the
+    for automatic dependency tracking.  If GNU make was not used, consider
+    re-running the configure script with MAKE=\"gmake\" (or whatever is
+    necessary).  You can also try re-running configure with the
     '--disable-dependency-tracking' option to at least be able to build
     the package (albeit without support for automatic dependency tracking).
 See \`config.log' for more details" "$LINENO" 5; }

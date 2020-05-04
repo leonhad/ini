@@ -13,6 +13,7 @@ AC_ARG_ENABLE(debug,
     if test "$enable_debug" = "yes"; then
         AX_CHECK_COMPILE_FLAG([-fprofile-arcs], [CXXFLAGS="$CXXFLAGS -fprofile-arcs"])
         AX_CHECK_COMPILE_FLAG([-O0 -g3], [CXXFLAGS="$CXXFLAGS -O0 -g3"])
+        AX_CHECK_COMPILE_FLAG([-fdiagnostics-show-option],  [CXXFLAGS="$CXXFLAGS -fdiagnostics-show-option"])
 
         dnl Coverage on clang
         AX_CHECK_COMPILE_FLAG([-ftest-coverage], [CXXFLAGS="$CXXFLAGS -ftest-coverage"])
