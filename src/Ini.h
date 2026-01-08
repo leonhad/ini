@@ -20,7 +20,6 @@
 #ifndef _ini_h
 #define _ini_h
 
-#include "Key.h"
 #include "Section.h"
 
 #include <iostream>
@@ -29,18 +28,18 @@ namespace ini
 {
     class EXPORT_INI Ini : public Section
     {
-    public:
-        Ini();
+      public:
+        Ini() = default;
 
-        void Load(std::istream& in);
-        void Save(std::ostream& out);
+        void Load(std::istream &in);
+        void Save(std::ostream &out);
 
         std::string ToString();
 
-    private:
-        void ParseSection(std::istream& in);
-        void ParseKey(std::istream& in, std::string& cgroup);
-        void ParseComment(std::istream& in);
+      private:
+        void ParseSection(std::istream &in);
+        void ParseKey(std::istream &in, std::string &cgroup);
+        void ParseComment(std::istream &in);
     };
 }
 

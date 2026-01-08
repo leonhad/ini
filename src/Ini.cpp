@@ -22,166 +22,162 @@
 using namespace ini;
 using namespace std;
 
-Ini::Ini() : Section()
-{
-}
-
 void Ini::Load(istream &in)
 {
-	// Current section name.
-	string section = GetCurrentSection();
-	char ctoken;
+    // Current section name.
+    string section = GetCurrentSection();
+    char ctoken;
 
-	while (not in.eof())
-	{
-		in.get(ctoken);
+    while (not in.eof())
+    {
+        in.get(ctoken);
 
-		switch (ctoken)
-		{
-		case '[':
-			ParseSection(in);
-			break;
+        switch (ctoken)
+        {
+        case '[':
+            ParseSection(in);
+            break;
 
-		case ';':
-		case '#':
-			ParseComment(in);
-			break;
+        case ';':
+        case '#':
+            ParseComment(in);
+            break;
 
-		case ' ':
-		case '\n':
-			// Ignore spaces and new lines
-			break;
+        case ' ':
+        case '\n':
+            // Ignore spaces and new lines
+            break;
 
-		default:
-			in.unget();
-			ParseKey(in, section);
-		}
-	}
+        default:
+            in.unget();
+            ParseKey(in, section);
+        }
+    }
 }
 
 string Ini::ToString()
 {
-	string file;
+    string file;
 
-	for (auto group : list())
-	{
-		file += "[" + group.first + "]\n";
-		for (const auto& key : *group.second)
-		{
-			file += key.first + "=" + key.second + "\n";
-		}
-	}
-	return file;
+    for (const auto &group : list())
+    {
+        file += "[" + group.first + "]\n";
+        for (const auto &key : *group.second)
+        {
+            file += key.first + "=" + key.second + "\n";
+        }
+    }
+    return file;
 }
 
-void Ini::Save(std::ostream& out)
+void Ini::Save(std::ostream &out)
 {
-	for (auto group : list())
-	{
-		out << "[" << group.first << "]\n";
-		for (const auto& key : *group.second)
-		{
-			out << key.first << "=" << key.second << "\n";
-		}
-	}
+    for (const auto &group : list())
+    {
+        out << "[" << group.first << "]\n";
+        for (const auto &key : *group.second)
+        {
+            out << key.first << "=" << key.second << "\n";
+        }
+    }
 }
 
 void Ini::ParseKey(istream &in, string &cgroup)
 {
-	// Temporary key name.
-	string ckey = "";
+    // Temporary key name.
+    string ckey;
 
-	char current;
-	do
-	{
-		in.get(current);
+    char current;
+    do
+    {
+        in.get(current);
 
-		// If token is a '=', break loop.
-		if (current == '=')
-		{
-			break;
-		}
+        // If the token is a '=', break the loop.
+        if (current == '=')
+        {
+            break;
+        }
 
-		// Add token if is not an whitespace.
-		if (current != ' ')
-		{
-			ckey += current;
-		}
-	} while (not in.eof());
+        // Add token if is not whitespace.
+        if (current != ' ')
+        {
+            ckey += current;
+        }
+    } while (not in.eof());
 
-	// If there is not a '=', skip that line.
-	if (current == '\n')
-	{
-		return;
-	}
+    // If there is not a '=', skip that line.
+    if (current == '\n')
+    {
+        return;
+    }
 
-	// Skip '=' char
-	if (current == '=')
-	{
-		in.get(current);
-	}
+    // Skip '=' char
+    if (current == '=')
+    {
+        in.get(current);
+    }
 
-	// skip spaces
-	while (not in.eof())
-	{
-		if (current == '\n' || current != ' ')
-		{
-			break;
-		}
+    // skip spaces
+    while (not in.eof())
+    {
+        if (current == '\n' || current != ' ')
+        {
+            break;
+        }
 
-		in.get(current);
-	}
+        in.get(current);
+    }
 
-	string keytemp2;
-	while (not in.eof())
-	{
-		//se for uma nova linha saia do loop.
-		if (current == '\n')
-		{
-			break;
-		}
-		keytemp2 += current;
-		
-		in.get(current);
-	}
+    string keytemp2;
+    while (not in.eof())
+    {
+        // se for uma nova linha saia do loop.
+        if (current == '\n')
+        {
+            break;
+        }
+        keytemp2 += current;
 
-	add(ckey, keytemp2);
+        in.get(current);
+    }
+
+    add(ckey, keytemp2);
 }
 
 void Ini::ParseSection(istream &in)
 {
-	char current;
-	string section = "";
+    char current;
+    string section = "";
 
-	while (not in.eof())
-	{
-		in.get(current);
+    while (not in.eof())
+    {
+        in.get(current);
 
-		if (current == ']' || current == '\n')
-		{
-			break;
-		}
+        if (current == ']' || current == '\n')
+        {
+            break;
+        }
 
-		section += current;
-	}
+        section += current;
+    }
 
-	AddSection(section);
+    AddSection(section);
 }
 
 void Ini::ParseComment(istream &in)
 {
-	char current;
-	string section = "";
+    char current;
+    string section;
 
-	while (not in.eof())
-	{
-		in.get(current);
+    while (not in.eof())
+    {
+        in.get(current);
 
-		if (current == '\n')
-		{
-			break;
-		}
+        if (current == '\n')
+        {
+            break;
+        }
 
-		current++;
-	}
+        current++;
+    }
 }

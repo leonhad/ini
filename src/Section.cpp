@@ -43,9 +43,9 @@ string Section::GetCurrentSection()
     return current;
 }
 
-void Section::SetCurrentSection(std::string current)
+void Section::SetCurrentSection(const std::string &section_name)
 {
-    this->current = current;
+    this->current = section_name;
 }
 
 void Section::clear()
@@ -57,14 +57,14 @@ void Section::clear()
     m_groups.clear();
 }
 
-void Section::remove(string name)
+void Section::remove(const string &name)
 {
     delete m_groups[name];
     m_groups.erase(name);
     current = nullptr;
 }
 
-void Section::AddSection(string name)
+void Section::AddSection(const string &name)
 {
     m_groups[name] = new KeyList{};
     current = name;
@@ -75,13 +75,13 @@ SectionList Section::list()
     return m_groups;
 }
 
-KeyList * Section::getKeyList(string name)
+KeyList *Section::getKeyList(const string &group_name)
 {
-    current = name;
-    
-    for (const auto& group : m_groups)
+    current = group_name;
+
+    for (const auto &group : m_groups)
     {
-        if (group.first == name)
+        if (group.first == group_name)
         {
             return group.second;
         }
@@ -89,55 +89,55 @@ KeyList * Section::getKeyList(string name)
     return nullptr;
 }
 
-KeyList * Section::getCurrentKeys()
+KeyList *Section::getCurrentKeys()
 {
     return getKeyList(current);
 }
 
-void Section::add(string group, string name, string data)
+void Section::add(const string &group, const string &name, const string &data)
 {
     current = group;
-    
+
     KeyList *keys = getKeyList(group);
     if (keys)
     {
-        keys->push_back({ name, data });
+        keys->emplace_back(name, data);
     }
 }
 
-void Section::add(string name, string data)
+void Section::add(const string &name, const string &data)
 {
     add(current, name, data);
 }
 
-bool Section::remove(string group, string name)
+bool Section::remove(const string &group, const string &name)
 {
     current = group;
-    
+
     KeyList *keys = getKeyList(group);
     if (keys)
     {
-        for (auto i = keys->begin(); i != keys->end(); i++)
+        for (auto i = keys->begin(); i != keys->end(); ++i)
         {
-            if ((*i).first == name)
+            if (i->first == name)
             {
                 keys->erase(i);
                 return true;
             }
         }
     }
-    
+
     return false;
 }
 
-string Section::get(string group, string name)
+string Section::get(const string &group, const string &name)
 {
     current = group;
-    
-    KeyList *keys = getKeyList(group);
+
+    const KeyList *keys = getKeyList(group);
     if (keys)
     {
-        for (const auto& key : *keys)
+        for (const auto &key : *keys)
         {
             if (key.first == name)
             {
@@ -148,7 +148,7 @@ string Section::get(string group, string name)
     return "";
 }
 
-string Section::get(string name)
+string Section::get(const string &name)
 {
     return get(current, name);
 }

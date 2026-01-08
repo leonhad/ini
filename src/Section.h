@@ -20,42 +20,41 @@
 #ifndef _groups_h
 #define _groups_h
 
-#include "dllutil.h"
 #include "Key.h"
-#include <string>
-#include <vector>
+#include "dllutil.h"
 #include <map>
+#include <string>
 #include <utility>
+#include <vector>
 
 namespace ini
 {
     using SectionList = std::map<std::string, KeyList *>;
-    
+
     class EXPORT_INI Section
     {
-    private:
         SectionList m_groups;
         std::string current;
-        
-    public:
+
+      public:
         Section();
         ~Section();
-        void AddSection(std::string name);
-        void remove(std::string name);
+        void AddSection(const std::string &name);
+        void remove(const std::string &name);
         SectionList list();
-        KeyList *getKeyList(std::string group);
+        KeyList *getKeyList(const std::string &group);
         KeyList *getCurrentKeys();
-        void add(std::string group, std::string name, std::string data);
-        void add(std::string name, std::string data);
-        bool remove(std::string group, std::string name);
-        std::string get(std::string group, std::string name);
-        std::string get(std::string name);
+        void add(const std::string &group, const std::string &name, const std::string &data);
+        void add(const std::string &name, const std::string &data);
+        bool remove(const std::string &group, const std::string &name);
+        std::string get(const std::string &group, const std::string &name);
+        std::string get(const std::string &name);
         void clear();
 
         std::string GetCurrentSection();
-        void SetCurrentSection(std::string current);
+        void SetCurrentSection(const std::string &section_name);
 
-        std::string GetDefaultSection();
+        static std::string GetDefaultSection();
     };
 }
 

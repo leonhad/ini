@@ -23,7 +23,7 @@
 
 #include <SDKDDKVer.h>
 
-#pragma warning( disable: 4251 )
+#pragma warning(disable : 4251)
 
 #ifdef INI_EXPORTS
 #define EXPORT_INI __declspec(dllexport)
