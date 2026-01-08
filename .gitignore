@@ -9,7 +9,6 @@
 .DS_Store
 .scannerwork
 default.profraw
-/out
 config.h
 config.log
 config.status
@@ -22,15 +21,10 @@ config.status
 autom4te.cache
 *~
 Makefile
-config.h
-*.log
 .deps/
 libtool
 stamp-h1
-config.status
-*.la
 *.lo
-*.o
 .libs/
 *.user
 /*~
@@ -42,4 +36,4 @@ Release
 packages
 .vs
 src/ini.xcodeproj/project.xcworkspace/xcuserdata/
-
+.idea
