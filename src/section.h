@@ -17,11 +17,10 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-#ifndef _groups_h
-#define _groups_h
+#pragma once
 
-#include "Key.h"
 #include "dllutil.h"
+#include "key.h"
 #include <map>
 #include <string>
 #include <utility>
@@ -33,17 +32,18 @@ namespace ini
 
     class EXPORT_INI Section
     {
-        SectionList m_groups;
+        SectionList groups;
         std::string current;
 
       public:
         Section();
         ~Section();
-        void AddSection(const std::string &name);
+
+        void add_section(const std::string &name);
         void remove(const std::string &name);
-        SectionList list();
-        KeyList *getKeyList(const std::string &group);
-        KeyList *getCurrentKeys();
+        SectionList list() const;
+        KeyList *get_key_list(const std::string &group);
+        KeyList *get_current_keys();
         void add(const std::string &group, const std::string &name, const std::string &data);
         void add(const std::string &name, const std::string &data);
         bool remove(const std::string &group, const std::string &name);
@@ -51,11 +51,7 @@ namespace ini
         std::string get(const std::string &name);
         void clear();
 
-        std::string GetCurrentSection();
-        void SetCurrentSection(const std::string &section_name);
-
-        static std::string GetDefaultSection();
+        std::string get_current_section();
+        void set_current_section(const std::string &section_name);
     };
 }
-
-#endif

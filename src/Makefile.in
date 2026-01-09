@@ -133,7 +133,7 @@ am__uninstall_files_from_dir = { \
 am__installdirs = "$(DESTDIR)$(libdir)" "$(DESTDIR)$(libini_ladir)"
 LTLIBRARIES = $(lib_LTLIBRARIES)
 libini_la_LIBADD =
-am_libini_la_OBJECTS = libini_la-Section.lo libini_la-Ini.lo
+am_libini_la_OBJECTS = libini_la-section.lo libini_la-ini.lo
 nodist_libini_la_OBJECTS =
 libini_la_OBJECTS = $(am_libini_la_OBJECTS) \
 	$(nodist_libini_la_OBJECTS)
@@ -159,8 +159,8 @@ am__v_at_1 =
 DEFAULT_INCLUDES = 
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__maybe_remake_depfiles = depfiles
-am__depfiles_remade = ./$(DEPDIR)/libini_la-Ini.Plo \
-	./$(DEPDIR)/libini_la-Section.Plo
+am__depfiles_remade = ./$(DEPDIR)/libini_la-ini.Plo \
+	./$(DEPDIR)/libini_la-section.Plo
 am__mv = mv -f
 CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
 	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
@@ -335,14 +335,14 @@ top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 lib_LTLIBRARIES = libini.la
 libini_la_SOURCES = \
-    Section.cpp \
-    Ini.cpp
+    section.cpp \
+    ini.cpp
 
 libini_ladir = $(includedir)/ini
 libini_la_HEADERS = \
-	Ini.h \
-    Section.h \
-	Key.h
+	ini.h \
+    section.h \
+	key.h
 
 libini_la_CXXFLAGS = $(AM_CXXFLAGS)
 libini_la_CPPFLAGS = $(AM_CPPFLAGS)
@@ -426,8 +426,8 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libini_la-Ini.Plo@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libini_la-Section.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libini_la-ini.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libini_la-section.Plo@am__quote@ # am--include-marker
 
 $(am__depfiles_remade):
 	@$(MKDIR_P) $(@D)
@@ -459,19 +459,19 @@ am--depfiles: $(am__depfiles_remade)
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LTCXXCOMPILE) -c -o $@ $<
 
-libini_la-Section.lo: Section.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libini_la_CPPFLAGS) $(CPPFLAGS) $(libini_la_CXXFLAGS) $(CXXFLAGS) -MT libini_la-Section.lo -MD -MP -MF $(DEPDIR)/libini_la-Section.Tpo -c -o libini_la-Section.lo `test -f 'Section.cpp' || echo '$(srcdir)/'`Section.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libini_la-Section.Tpo $(DEPDIR)/libini_la-Section.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='Section.cpp' object='libini_la-Section.lo' libtool=yes @AMDEPBACKSLASH@
+libini_la-section.lo: section.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libini_la_CPPFLAGS) $(CPPFLAGS) $(libini_la_CXXFLAGS) $(CXXFLAGS) -MT libini_la-section.lo -MD -MP -MF $(DEPDIR)/libini_la-section.Tpo -c -o libini_la-section.lo `test -f 'section.cpp' || echo '$(srcdir)/'`section.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libini_la-section.Tpo $(DEPDIR)/libini_la-section.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='section.cpp' object='libini_la-section.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libini_la_CPPFLAGS) $(CPPFLAGS) $(libini_la_CXXFLAGS) $(CXXFLAGS) -c -o libini_la-Section.lo `test -f 'Section.cpp' || echo '$(srcdir)/'`Section.cpp
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libini_la_CPPFLAGS) $(CPPFLAGS) $(libini_la_CXXFLAGS) $(CXXFLAGS) -c -o libini_la-section.lo `test -f 'section.cpp' || echo '$(srcdir)/'`section.cpp
 
-libini_la-Ini.lo: Ini.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libini_la_CPPFLAGS) $(CPPFLAGS) $(libini_la_CXXFLAGS) $(CXXFLAGS) -MT libini_la-Ini.lo -MD -MP -MF $(DEPDIR)/libini_la-Ini.Tpo -c -o libini_la-Ini.lo `test -f 'Ini.cpp' || echo '$(srcdir)/'`Ini.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libini_la-Ini.Tpo $(DEPDIR)/libini_la-Ini.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='Ini.cpp' object='libini_la-Ini.lo' libtool=yes @AMDEPBACKSLASH@
+libini_la-ini.lo: ini.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libini_la_CPPFLAGS) $(CPPFLAGS) $(libini_la_CXXFLAGS) $(CXXFLAGS) -MT libini_la-ini.lo -MD -MP -MF $(DEPDIR)/libini_la-ini.Tpo -c -o libini_la-ini.lo `test -f 'ini.cpp' || echo '$(srcdir)/'`ini.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libini_la-ini.Tpo $(DEPDIR)/libini_la-ini.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='ini.cpp' object='libini_la-ini.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libini_la_CPPFLAGS) $(CPPFLAGS) $(libini_la_CXXFLAGS) $(CXXFLAGS) -c -o libini_la-Ini.lo `test -f 'Ini.cpp' || echo '$(srcdir)/'`Ini.cpp
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libini_la_CPPFLAGS) $(CPPFLAGS) $(libini_la_CXXFLAGS) $(CXXFLAGS) -c -o libini_la-ini.lo `test -f 'ini.cpp' || echo '$(srcdir)/'`ini.cpp
 
 mostlyclean-libtool:
 	-rm -f *.lo
@@ -627,8 +627,8 @@ clean-am: clean-generic clean-libLTLIBRARIES clean-libtool \
 	mostlyclean-am
 
 distclean: distclean-am
-		-rm -f ./$(DEPDIR)/libini_la-Ini.Plo
-	-rm -f ./$(DEPDIR)/libini_la-Section.Plo
+		-rm -f ./$(DEPDIR)/libini_la-ini.Plo
+	-rm -f ./$(DEPDIR)/libini_la-section.Plo
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-tags
@@ -674,8 +674,8 @@ install-ps-am:
 installcheck-am:
 
 maintainer-clean: maintainer-clean-am
-		-rm -f ./$(DEPDIR)/libini_la-Ini.Plo
-	-rm -f ./$(DEPDIR)/libini_la-Section.Plo
+		-rm -f ./$(DEPDIR)/libini_la-ini.Plo
+	-rm -f ./$(DEPDIR)/libini_la-section.Plo
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 

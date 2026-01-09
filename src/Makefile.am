@@ -1,14 +1,14 @@
 lib_LTLIBRARIES = libini.la
 libini_la_SOURCES = \
-    Section.cpp \
-    Ini.cpp
+    section.cpp \
+    ini.cpp
 
 libini_ladir = $(includedir)/ini
 
 libini_la_HEADERS = \
-	Ini.h \
-    Section.h \
-	Key.h
+	ini.h \
+    section.h \
+	key.h
 
 libini_la_CXXFLAGS = $(AM_CXXFLAGS)
 libini_la_CPPFLAGS = $(AM_CPPFLAGS)

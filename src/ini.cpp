@@ -17,15 +17,15 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-#include "Ini.h"
+#include "ini.h"
 
 using namespace ini;
 using namespace std;
 
-void Ini::Load(istream &in)
+void Ini::load(istream &in)
 {
     // Current section name.
-    string section = GetCurrentSection();
+    string section = get_current_section();
     char ctoken;
 
     while (not in.eof())
@@ -35,12 +35,12 @@ void Ini::Load(istream &in)
         switch (ctoken)
         {
         case '[':
-            ParseSection(in);
+            parse_section(in);
             break;
 
         case ';':
         case '#':
-            ParseComment(in);
+            parse_comment(in);
             break;
 
         case ' ':
@@ -50,12 +50,12 @@ void Ini::Load(istream &in)
 
         default:
             in.unget();
-            ParseKey(in, section);
+            parse_key(in);
         }
     }
 }
 
-string Ini::ToString()
+string Ini::to_string() const
 {
     string file;
 
@@ -70,7 +70,7 @@ string Ini::ToString()
     return file;
 }
 
-void Ini::Save(std::ostream &out)
+void Ini::save(std::ostream &out) const
 {
     for (const auto &group : list())
     {
@@ -82,7 +82,7 @@ void Ini::Save(std::ostream &out)
     }
 }
 
-void Ini::ParseKey(istream &in, string &cgroup)
+void Ini::parse_key(istream &in)
 {
     // Temporary key name.
     string ckey;
@@ -128,7 +128,7 @@ void Ini::ParseKey(istream &in, string &cgroup)
         in.get(current);
     }
 
-    string keytemp2;
+    string result_key;
     while (not in.eof())
     {
         // se for uma nova linha saia do loop.
@@ -136,18 +136,18 @@ void Ini::ParseKey(istream &in, string &cgroup)
         {
             break;
         }
-        keytemp2 += current;
+        result_key += current;
 
         in.get(current);
     }
 
-    add(ckey, keytemp2);
+    add(ckey, result_key);
 }
 
-void Ini::ParseSection(istream &in)
+void Ini::parse_section(istream &in)
 {
     char current;
-    string section = "";
+    string section_name;
 
     while (not in.eof())
     {
@@ -158,16 +158,15 @@ void Ini::ParseSection(istream &in)
             break;
         }
 
-        section += current;
+        section_name += current;
     }
 
-    AddSection(section);
+    add_section(section_name);
 }
 
-void Ini::ParseComment(istream &in)
+void Ini::parse_comment(istream &in)
 {
     char current;
-    string section;
 
     while (not in.eof())
     {

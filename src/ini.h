@@ -17,17 +17,26 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-#ifndef keys_h
-#define keys_h
+#pragma once
 
-#include "dllutil.h"
-#include <string>
-#include <vector>
+#include "section.h"
+#include <iostream>
 
 namespace ini
 {
-    using Key = std::pair<std::string, std::string>;
-    using KeyList = std::vector<Key>;
-}
+    class EXPORT_INI Ini : public Section
+    {
+      public:
+        Ini() = default;
 
-#endif
+        void load(std::istream &in);
+        void save(std::ostream &out) const;
+
+        std::string to_string() const;
+
+      private:
+        void parse_section(std::istream &in);
+        void parse_key(std::istream &in);
+        static void parse_comment(std::istream &in);
+    };
+}

@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-#include "Section.h"
+#include "section.h"
 #include <map>
 
 using namespace std;
@@ -25,12 +25,7 @@ using namespace ini;
 
 Section::Section()
 {
-    AddSection(GetDefaultSection());
-}
-
-string Section::GetDefaultSection()
-{
-    return "";
+    add_section("");
 }
 
 Section::~Section()
@@ -38,48 +33,49 @@ Section::~Section()
     clear();
 }
 
-string Section::GetCurrentSection()
+string Section::get_current_section()
 {
     return current;
 }
 
-void Section::SetCurrentSection(const std::string &section_name)
+void Section::set_current_section(const std::string &section_name)
 {
     this->current = section_name;
 }
 
 void Section::clear()
 {
-    for (const auto &group : m_groups)
+    for (const auto &group : groups)
     {
         delete group.second;
     }
-    m_groups.clear();
+
+    groups.clear();
 }
 
 void Section::remove(const string &name)
 {
-    delete m_groups[name];
-    m_groups.erase(name);
+    delete groups[name];
+    groups.erase(name);
     current = nullptr;
 }
 
-void Section::AddSection(const string &name)
+void Section::add_section(const string &name)
 {
-    m_groups[name] = new KeyList{};
+    groups[name] = new KeyList{};
     current = name;
 }
 
-SectionList Section::list()
+SectionList Section::list() const
 {
-    return m_groups;
+    return groups;
 }
 
-KeyList *Section::getKeyList(const string &group_name)
+KeyList *Section::get_key_list(const string &group_name)
 {
     current = group_name;
 
-    for (const auto &group : m_groups)
+    for (const auto &group : groups)
     {
         if (group.first == group_name)
         {
@@ -89,16 +85,16 @@ KeyList *Section::getKeyList(const string &group_name)
     return nullptr;
 }
 
-KeyList *Section::getCurrentKeys()
+KeyList *Section::get_current_keys()
 {
-    return getKeyList(current);
+    return get_key_list(current);
 }
 
 void Section::add(const string &group, const string &name, const string &data)
 {
     current = group;
 
-    KeyList *keys = getKeyList(group);
+    KeyList *keys = get_key_list(group);
     if (keys)
     {
         keys->emplace_back(name, data);
@@ -114,7 +110,7 @@ bool Section::remove(const string &group, const string &name)
 {
     current = group;
 
-    KeyList *keys = getKeyList(group);
+    KeyList *keys = get_key_list(group);
     if (keys)
     {
         for (auto i = keys->begin(); i != keys->end(); ++i)
@@ -134,7 +130,7 @@ string Section::get(const string &group, const string &name)
 {
     current = group;
 
-    const KeyList *keys = getKeyList(group);
+    const KeyList *keys = get_key_list(group);
     if (keys)
     {
         for (const auto &key : *keys)

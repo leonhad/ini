@@ -17,30 +17,14 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-#ifndef _ini_h
-#define _ini_h
+#pragma once
 
-#include "Section.h"
-
-#include <iostream>
+#include "dllutil.h"
+#include <string>
+#include <vector>
 
 namespace ini
 {
-    class EXPORT_INI Ini : public Section
-    {
-      public:
-        Ini() = default;
-
-        void Load(std::istream &in);
-        void Save(std::ostream &out);
-
-        std::string ToString();
-
-      private:
-        void ParseSection(std::istream &in);
-        void ParseKey(std::istream &in, std::string &cgroup);
-        void ParseComment(std::istream &in);
-    };
+    using Key = std::pair<std::string, std::string>;
+    using KeyList = std::vector<Key>;
 }
-
-#endif
