@@ -57,7 +57,7 @@ void Section::remove(const string &name)
 {
     delete groups[name];
     groups.erase(name);
-    current = nullptr;
+    current = "";
 }
 
 void Section::add_section(const string &name)
